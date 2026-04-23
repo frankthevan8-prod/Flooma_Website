@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Flooma Agency</title>
+<title>Flooma — Websites That Convert | Web Design & Development</title>
+<meta name="description" content="Flooma builds fast, conversion-focused websites for growing businesses. Design, development, SEO, and hosting — all handled. Starting from $499."/>
+<meta property="og:title" content="Flooma — Websites That Convert"/>
+<meta property="og:description" content="Fast, conversion-focused websites built from scratch. Design, development, SEO, and hosting — all handled. Starting from $499."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://flooma.agency/"/>
+<link rel="canonical" href="https://flooma.agency/"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +54,7 @@
     color: rgba(255,255,255,0.9);
     text-decoration: none;
     padding: 0.5rem 1.25rem;
-    border: 1px solid rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.55);
     transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
   .nav-cta-main:hover {
@@ -56,6 +62,42 @@
     border-color: rgba(255,255,255,0.8);
     background: rgba(255,255,255,0.08);
   }
+  .hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    font-family: 'Unispace', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.55);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s ease, border-color 0.2s ease,
+                transform 0.25s cubic-bezier(0.34,1.3,0.64,1);
+  }
+  .hero-cta-btn:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-2px);
+  }
+  .hero-cta-btn:active { transform: translateY(0) scale(1); }
+  .hero-cta-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%;
+    width: 55%; height: 100%;
+    background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.22) 50%, transparent 80%);
+    transform: skewX(-15deg);
+    pointer-events: none;
+    transition: left 0s;
+  }
+  .hero-cta-btn:hover::after { left: 150%; transition: left 0.45s ease; }
   .fade-up {
     opacity: 0;
     transform: translateY(18px);
@@ -67,13 +109,24 @@
   .fade-up.delay-3 { transition-delay: 0.24s; }
   .fade-up.delay-4 { transition-delay: 0.32s; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Flooma",
+  "url": "https://flooma.agency",
+  "description": "Flooma builds fast, conversion-focused websites for growing businesses. Design, development, SEO, and hosting — all handled.",
+  "serviceType": ["Web Design", "Web Development", "SEO", "Web Hosting"],
+  "priceRange": "$499 - $1499"
+}
+</script>
 <script id="tailwind-config">
   tailwind.config = {
     darkMode: "class",
     theme: {
       extend: {
         colors: {
-          "surface": "#fff7e0",
+          "surface": "#fff2c9",
           "on-error": "#ffffff",
           "tertiary-container": "#1c1b1a",
           "background": "#fff7e0",
@@ -81,12 +134,12 @@
           "tertiary-fixed-dim": "#cac6c4",
           "on-background": "#1c1c15",
           "inverse-primary": "#c8c6c5",
-          "surface-container-low": "#fffbef",
+          "surface-container-low": "#fff2c9",
           "on-secondary-fixed-variant": "#484740",
           "on-secondary-fixed": "#1c1c16",
           "on-primary-fixed-variant": "#474746",
           "surface-tint": "#5f5e5e",
-          "surface-container-lowest": "#ffffff",
+          "surface-container-lowest": "#fff7e0",
           "primary-fixed": "#e5e2e1",
           "surface-container-highest": "#e6e3d7",
           "on-tertiary-fixed-variant": "#484645",
@@ -99,7 +152,7 @@
           "tertiary": "#000000",
           "on-surface-variant": "#444748",
           "outline-variant": "#c4c7c7",
-          "surface-bright": "#fff7e0",
+          "surface-bright": "#fff2c9",
           "on-surface": "#1c1c15",
           "secondary": "#605e57",
           "primary-fixed-dim": "#c8c6c5",
@@ -120,7 +173,7 @@
           "on-secondary-container": "#64635b",
           "outline": "#747878",
           "surface-container": "#f1eee2",
-          "custom-cream": "#fff7e0"
+          "custom-cream": "#fff2c9"
         },
         borderRadius: {
           DEFAULT: "0.25rem",
@@ -155,7 +208,7 @@
   }
 </script>
 </head>
-<body class="bg-custom-cream text-on-background font-body-main antialiased selection:bg-primary selection:text-on-primary">
+<body class="bg-background text-on-background font-body-main antialiased selection:bg-primary selection:text-on-primary">
 
 <!-- Nav -->
 <nav id="navbar">
@@ -186,11 +239,7 @@
       WE BUILD WEBSITES<br/>THAT CONVERT.
     </h1>
     <div class="mt-8">
-      <a href="contact.html"
-        style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 2rem;font-family:'Unispace',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,0.5);text-decoration:none;transition:background 0.2s ease,border-color 0.2s ease;"
-        onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.85)'"
-        onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,0.5)'"
-      >Let's talk &rarr;</a>
+      <a href="contact.html" class="hero-cta-btn">Let's talk &rarr;</a>
     </div>
   </div>
   <div class="absolute left-8 top-1/2 -translate-y-1/2 vertical-text font-label-caps text-label-caps text-white/40 tracking-[0.2em] uppercase font-thin hidden md:block z-[2]">01 / Introduction</div>
@@ -200,22 +249,22 @@
 <main class="max-w-container-max mx-auto">
 
   <!-- Intro Text -->
-  <section class="px-margin py-28 md:py-40">
-    <div class="max-w-[860px]">
-      <p id="intro-text" class="font-medium" style="font-size:clamp(24px,2.8vw,38px);line-height:1.38;letter-spacing:-0.03em;color:#1c1c15;">We build websites that actually work. Fast, focused, built around what your business needs most: more customers. Handling everything from design to launch, and we're with you every step of the way.</p>
+  <section class="px-margin py-8 md:py-12">
+    <div class="max-w-[720px]">
+      <p id="intro-text" class="font-medium" style="font-size:clamp(28px,3.2vw,44px);line-height:1.38;letter-spacing:-0.03em;color:#1c1c15;font-weight:600;">We build websites that actually work — fast, focused, and built around getting you more customers. We handle everything from design to launch.</p>
     </div>
   </section>
 
   <!-- Services -->
-  <section id="services" class="px-margin py-24 relative">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-      <div class="md:col-span-4 flex flex-col">
-        <h2 class="font-label-caps text-label-caps uppercase text-on-surface-variant font-thin mb-3">Services</h2>
-        <div class="flex-1 bg-surface-variant hidden md:block overflow-hidden" style="min-height:300px;">
-          <img alt="Services" class="w-full h-full object-cover object-top" src="brand_assets/computer falling.png"/>
+  <section id="services" class="px-margin py-24 relative overflow-hidden">
+    <h2 class="font-label-caps text-label-caps uppercase font-thin absolute top-6 left-16 z-10 hidden md:block" style="color:#1c1c15;opacity:0.45;">Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-stretch">
+      <div class="md:col-span-4 relative hidden md:block -my-24">
+        <div class="absolute inset-0 overflow-hidden">
+          <img alt="Services" class="w-full h-full object-cover object-center" src="brand_assets/computer falling.png" loading="lazy"/>
         </div>
       </div>
-      <div class="md:col-span-8">
+      <div class="md:col-span-8 self-stretch">
         <div class="flex flex-col border-t border-inverse-primary">
 
           <div class="grid grid-cols-12 gap-gutter py-8 border-b border-inverse-primary group hover:bg-surface-container-low transition-colors duration-300 fade-up delay-1">
@@ -226,7 +275,7 @@
               <div class="flex flex-col items-end text-right group-hover:-translate-x-2 transition-transform duration-300">
                 <h3 class="font-headline-md text-headline-md text-primary mb-4 font-black">Website Design</h3>
                 <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
-                  We design websites around what your visitors actually do. Every page has a job, and we make sure it does it well. Clear layouts, strong hierarchy, nothing that gets in the way of a sale.
+                  We design around what your visitors actually do. Every page has a job — and we make sure it does it well. Clear layouts, strong hierarchy, nothing between them and the thing you want them to do.
                 </p>
               </div>
             </div>
@@ -240,7 +289,7 @@
               <div class="flex flex-col items-end text-right group-hover:-translate-x-2 transition-transform duration-300">
                 <h3 class="font-headline-md text-headline-md text-primary mb-4 font-black">Website Development</h3>
                 <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
-                  Clean, fast code written from scratch. No page builders, no bloated themes. We build it ourselves so it loads quickly, breaks less often, and does exactly what you need it to do.
+                  Written from scratch, no page builders, no bloated themes. We build it ourselves so it loads fast, breaks rarely, and does what you actually need it to do.
                 </p>
               </div>
             </div>
@@ -254,7 +303,7 @@
               <div class="flex flex-col items-end text-right group-hover:-translate-x-2 transition-transform duration-300">
                 <h3 class="font-headline-md text-headline-md text-primary mb-4 font-black">SEO</h3>
                 <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
-                  If nobody can find you, the website doesn't matter. We get the technical side right from the start, structure your content properly, and make sure search engines understand what you actually do.
+                  If nobody can find you, the website doesn't matter. We sort the technical side from the start — clean structure, proper markup, and content set up the way search engines actually read it.
                 </p>
               </div>
             </div>
@@ -268,7 +317,7 @@
               <div class="flex flex-col items-end text-right group-hover:-translate-x-2 transition-transform duration-300">
                 <h3 class="font-headline-md text-headline-md text-primary mb-4 font-black">Hosting / Maintenance</h3>
                 <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
-                  We keep the lights on. Security updates, speed checks, content changes, backups — all handled by the same people who built your site, so nothing falls through the cracks.
+                  Security updates, speed checks, content changes, backups — handled by the same people who built your site. Nothing gets lost in a support queue.
                 </p>
               </div>
             </div>
@@ -286,13 +335,13 @@
       <div class="col-span-12 md:col-span-4 flex flex-col justify-end">
         <h2 class="font-headline-lg text-headline-lg text-primary mb-8 font-black">THE STUDIO</h2>
         <p class="font-body-sm text-body-sm text-on-surface-variant mb-12">
-          We're Frank and Shaymus, two developers who got fed up watching local businesses pay thousands for average work from agencies that didn't really care. We started Flooma to fix that. No inflated quotes, no account managers in the middle. Just the two of us, building things properly and charging a fair price for it.
+          We're Frank and Shaymus, two developers who got fed up watching local businesses pay thousands for average work from agencies that didn't really care. Flooma is our answer to that. No inflated quotes, no account managers in the middle. Just the two of us, building things properly and charging a fair price for it.
         </p>
       </div>
       <div class="col-span-12 md:col-span-8">
         <div class="grid grid-cols-2 gap-unit">
           <div class="col-span-2 aspect-[16/9] bg-surface-variant overflow-hidden">
-            <img alt="Studio workspace" class="w-full h-full object-cover" src="brand_assets/computer in grass.png"/>
+            <img alt="Studio workspace" class="w-full h-full object-cover" src="brand_assets/computer in grass.png" loading="lazy"/>
           </div>
           <div class="col-span-1 aspect-square bg-surface-variant">
             <img alt="Design work" class="w-full h-full object-cover grayscale" src="https://placehold.co/600x600/e6e3d7/444748"/>
@@ -314,11 +363,12 @@
       <div class="flex flex-col md:flex-row items-baseline justify-between py-12 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer">
         <div class="flex-1">
           <h3 class="font-headline-md text-headline-md font-black mb-2 group-hover:pl-4 transition-all duration-300">Foundation</h3>
-          <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Basic brand identity, single-page landing site, typography and colour palette.</p>
+          <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Single-page landing site with brand identity — typography, colour palette, and a design built to convert.</p>
         </div>
         <div class="text-right">
           <span class="font-display-xl text-display-xl font-black leading-none">$499</span>
-          <span class="block font-label-caps text-label-caps text-outline uppercase mt-2 tracking-widest">Base Retainer</span>
+          <span class="block font-label-caps text-label-caps text-outline uppercase mt-2 tracking-widest">Fixed Fee</span>
+          <span class="block font-label-caps text-label-caps text-on-surface-variant mt-1 tracking-widest" style="font-size:10px;">+ $100/month hosting &amp; maintenance</span>
         </div>
       </div>
 
@@ -326,22 +376,24 @@
         <div class="absolute top-4 right-4 bg-primary text-on-primary font-label-caps text-label-caps uppercase px-4 py-1 text-[10px] hidden md:block">Popular</div>
         <div class="flex-1">
           <h3 class="font-headline-md text-headline-md font-black mb-2 group-hover:pl-4 transition-all duration-300">Architecture</h3>
-          <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Full brand system, multi-page website, e-commerce if needed, one month of support.</p>
+          <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Two-page custom website with brand system, contact form + lead capture, and third-party integrations. Ongoing support included with your monthly plan.</p>
         </div>
         <div class="text-right">
           <span class="font-display-xl text-display-xl font-black leading-none">$999</span>
           <span class="block font-label-caps text-label-caps text-outline uppercase mt-2 tracking-widest">Fixed Fee</span>
+          <span class="block font-label-caps text-label-caps text-on-surface-variant mt-1 tracking-widest" style="font-size:10px;">+ $100/month hosting &amp; maintenance</span>
         </div>
       </div>
 
       <div class="flex flex-col md:flex-row items-baseline justify-between py-12 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer">
         <div class="flex-1">
           <h3 class="font-headline-md text-headline-md font-black mb-2 group-hover:pl-4 transition-all duration-300">Ecosystem</h3>
-          <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Full digital product build, brand identity, advanced interactions, and priority ongoing support.</p>
+          <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Complete multi-page website with full brand identity, advanced interactions, and priority ongoing support.</p>
         </div>
         <div class="text-right">
           <span class="font-display-xl text-display-xl font-black leading-none">$1499</span>
-          <span class="block font-label-caps text-label-caps text-outline uppercase mt-2 tracking-widest">Retainer</span>
+          <span class="block font-label-caps text-label-caps text-outline uppercase mt-2 tracking-widest">Fixed Fee</span>
+          <span class="block font-label-caps text-label-caps text-on-surface-variant mt-1 tracking-widest" style="font-size:10px;">+ $100/month hosting &amp; maintenance</span>
         </div>
       </div>
 
@@ -354,11 +406,11 @@
 
 <!-- Footer -->
 <footer>
-  <!-- CTA section (cream) -->
-  <div style="background:#fff7e0;">
-    <div class="max-w-[1440px] mx-auto px-16 py-24 flex flex-col items-center">
-      <h2 class="font-headline-lg text-headline-lg text-primary mb-8 text-center font-black">READY TO BUILD THE FUTURE?</h2>
-      <a href="contact.html" style="display:inline-block;padding:1rem 2rem;background:#000;color:#fff;font-family:'Unispace',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Get in Touch</a>
+  <!-- CTA section -->
+  <div>
+    <div class="max-w-[1440px] mx-auto px-16 py-14 flex flex-col items-center">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-8 text-center font-black">LET'S BUILD SOMETHING GOOD.</h2>
+      <a href="contact.html" class="hero-cta-btn" style="color:#000;background:transparent;border-color:rgba(0,0,0,0.35);" onmouseover="this.style.background='rgba(0,0,0,0.06)';this.style.borderColor='rgba(0,0,0,0.6)';" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(0,0,0,0.35)';">Get in Touch</a>
     </div>
   </div>
   <!-- Bottom row (black) -->

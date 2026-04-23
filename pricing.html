@@ -4,7 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing — Flooma Web Development</title>
-  <meta name="description" content="Simple, transparent pricing for premium web development. No lock-in. No hidden fees. Starting from $500." />
+  <meta name="description" content="Simple, transparent pricing for premium web development. No lock-in. No hidden fees. Starting from $499." />
+  <meta property="og:title" content="Pricing — Flooma Web Development"/>
+  <meta property="og:description" content="Foundation, Architecture, or Ecosystem — no lock-in, no hidden fees. Starting from $499 + $100/month hosting &amp; maintenance."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://flooma.agency/pricing.html"/>
+  <link rel="canonical" href="https://flooma.agency/pricing.html"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Flooma",
+    "url": "https://flooma.agency",
+    "description": "Flooma builds fast, conversion-focused websites for growing businesses.",
+    "serviceType": ["Web Design", "Web Development", "SEO", "Web Hosting"],
+    "priceRange": "$499 - $1499"
+  }
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,8 +37,8 @@
           },
           colors: {
             fl: {
-              bg:      '#fff7e0',
-              bgDeep:  '#fffbef',
+              bg:      '#faf9f6',
+              bgDeep:  '#fff7e0',
               surface: 'rgba(255,255,255,0.72)',
               ink:     '#1A1916',
               muted:   '#5C5850',
@@ -110,39 +126,41 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 50;
-      transition: background 0.4s cubic-bezier(0.4,0,0.2,1),
-                  box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
-      background: transparent;
+      transition: box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
+      background: rgba(0, 0, 0, 1);
     }
     #navbar.scrolled {
-      background: rgba(240, 237, 227, 0.88);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      box-shadow: 0 4px 24px rgba(26,25,22,0.07);
-    }
-    #logo-img {
-      transition: filter 0.4s cubic-bezier(0.4,0,0.2,1);
-      filter: brightness(0) drop-shadow(0 1px 3px rgba(0,0,0,0.08));
+      background: rgba(0, 0, 0, 1);
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
     }
     .nav-link {
       font-family: 'Unispace', monospace;
-      color: #5C5850;
-      font-size: 0.72rem;
-      font-weight: 400;
+      font-size: 11px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
-      transition: color 0.2s ease, opacity 0.2s ease;
+      transition: color 0.2s ease;
     }
-    .nav-link:hover { color: #1A1916; }
-    .nav-link.active { color: #1A1916; }
-    #nav-cta {
-      font-family: 'Unispace', monospace !important;
-      background: #1C1A14 !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      box-shadow: 0 4px 20px rgba(28,26,20,0.25) !important;
-      color: #fff !important;
+    .nav-link:hover { color: #ffffff; }
+    .nav-link.active { color: #ffffff; }
+    .nav-cta-main {
+      font-family: 'Unispace', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid rgba(255,255,255,0.55);
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .nav-cta-main:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.08);
     }
     @media (max-width: 767px) {
       .desktop-nav { display: none !important; }
@@ -371,7 +389,7 @@
        NAVIGATION
   ═══════════════════════════════════ -->
   <nav id="navbar" role="navigation" aria-label="Main navigation">
-    <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;height:72px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="max-width:1440px;margin:0 auto;padding:0 4rem;height:80px;display:flex;align-items:center;justify-content:space-between;">
 
       <!-- Logo -->
       <a href="index.html" aria-label="Flooma home" style="display:flex;align-items:center;flex-shrink:0;">
@@ -390,17 +408,7 @@
       </div>
 
       <!-- CTA -->
-      <a href="contact.html"
-        style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.4rem;border-radius:100px;font-size:0.875rem;font-weight:500;letter-spacing:0.01em;cursor:pointer;text-decoration:none;transition:transform 0.25s cubic-bezier(0.34,1.3,0.64,1),box-shadow 0.25s ease;"
-        class="btn-dark ripple-btn shine-btn"
-        id="nav-cta"
-        onmouseover="this.style.transform='scale(1.03)'"
-        onmouseout="this.style.transform=''"
-        onfocus="this.style.outline='2px solid rgba(28,26,20,0.5)';this.style.outlineOffset='3px'"
-        onblur="this.style.outline=''"
-      >
-        Get in Touch
-      </a>
+      <a href="contact.html" class="nav-cta-main desktop-nav">Get in Touch</a>
     </div>
   </nav>
 
@@ -427,7 +435,7 @@
       </h1>
 
       <p class="anim-fade-up anim-delay-2" style="font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.75;color:#5C5850;max-width:520px;margin:0 auto 2.5rem;font-weight:400;">
-        Choose what fits your business today. You can always grow into the next tier — and there's never any lock-in.
+        Start with what fits now. Moving up later is easy — no lock-in, ever.
       </p>
 
       <div class="anim-fade-up anim-delay-3" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.1rem;border-radius:100px;background:rgba(28,26,20,0.07);">
@@ -446,23 +454,24 @@
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;align-items:start;">
 
-        <!-- STARTER -->
+        <!-- FOUNDATION -->
         <div class="price-card reveal">
           <div style="margin-bottom:1.75rem;">
-            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8C8880;margin:0 0 0.75rem;">Starter</p>
+            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8C8880;margin:0 0 0.75rem;">Foundation</p>
             <div style="display:flex;align-items:baseline;gap:0.35rem;margin-bottom:0.4rem;">
-              <span style="font-size:3rem;font-weight:800;letter-spacing:-0.04em;color:#1A1916;line-height:1;">$500</span>
+              <span style="font-size:3rem;font-weight:800;letter-spacing:-0.04em;color:#1A1916;line-height:1;">$499</span>
               <span style="font-size:0.9rem;color:#8C8880;font-weight:500;">upfront</span>
             </div>
-            <p style="font-size:0.82rem;color:#8C8880;margin:0 0 1.25rem;">no lock-in · no payment until approved</p>
-            <p style="font-size:0.95rem;line-height:1.6;color:#5C5850;margin:0;">Perfect for new businesses getting their first professional web presence.</p>
+            <p style="font-size:0.82rem;color:#8C8880;margin:0 0 0.25rem;">no lock-in · no payment until approved</p>
+            <p style="font-size:0.78rem;color:#8C8880;margin:0 0 1.25rem;">+ $100/month hosting &amp; maintenance</p>
+            <p style="font-size:0.95rem;line-height:1.6;color:#5C5850;margin:0;">Single-page landing site with brand identity — typography, colour palette, and a design built to convert.</p>
           </div>
 
           <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
             <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
               <div class="check-icon">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>Template website (5 pages)
+              </div>Single-page landing site
             </li>
             <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
               <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Domain setup + hosting
@@ -484,7 +493,7 @@
             </li>
           </ul>
 
-          <a href="contact.html?plan=starter"
+          <a href="contact.html?plan=foundation"
             class="btn-dark ripple-btn shine-btn"
             style="display:block;text-align:center;padding:0.95rem 1.5rem;border-radius:100px;font-size:0.95rem;font-weight:600;text-decoration:none;letter-spacing:0.01em;"
             onmouseover="this.style.transform='translateY(-2px)'"
@@ -494,7 +503,7 @@
           >Get Started</a>
         </div>
 
-        <!-- GROWTH (FEATURED) -->
+        <!-- ARCHITECTURE (FEATURED) -->
         <div class="price-card featured reveal reveal-delay-1" style="position:relative;">
           <!-- Popular badge -->
           <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#1A1916;border:2px solid rgba(255,255,255,0.15);padding:0.3rem 1rem;border-radius:100px;">
@@ -502,18 +511,19 @@
           </div>
 
           <div style="margin-bottom:1.75rem;margin-top:0.5rem;">
-            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin:0 0 0.75rem;">Growth</p>
+            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin:0 0 0.75rem;">Architecture</p>
             <div style="display:flex;align-items:baseline;gap:0.35rem;margin-bottom:0.4rem;">
-              <span style="font-size:3rem;font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1;">$1,000</span>
+              <span style="font-size:3rem;font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1;">$999</span>
               <span style="font-size:0.9rem;color:rgba(255,255,255,0.45);font-weight:500;">upfront</span>
             </div>
-            <p style="font-size:0.82rem;color:rgba(255,255,255,0.35);margin:0 0 1.25rem;">no lock-in · no payment until approved</p>
-            <p style="font-size:0.95rem;line-height:1.6;color:rgba(255,255,255,0.65);margin:0;">For established businesses ready to compete online and convert traffic into customers.</p>
+            <p style="font-size:0.82rem;color:rgba(255,255,255,0.35);margin:0 0 0.25rem;">no lock-in · no payment until approved</p>
+            <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin:0 0 1.25rem;">+ $100/month hosting &amp; maintenance</p>
+            <p style="font-size:0.95rem;line-height:1.6;color:rgba(255,255,255,0.65);margin:0;">Two-page custom website with brand system, contact form + lead capture, and third-party integrations. Ongoing support included every month.</p>
           </div>
 
           <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
             <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Custom design (up to 8 pages)
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Custom design (2 pages)
             </li>
             <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
               <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Domain setup + hosting
@@ -525,7 +535,7 @@
               <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Full on-page SEO optimisation
             </li>
             <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Booking calendar integration
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Third-party integrations
             </li>
             <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
               <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Contact form + lead capture
@@ -534,14 +544,14 @@
               <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Google Business Profile setup
             </li>
             <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>2 revision rounds
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Ongoing monthly support included
             </li>
             <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
               <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Free discovery call
             </li>
           </ul>
 
-          <a href="contact.html?plan=growth"
+          <a href="contact.html?plan=architecture"
             class="btn-glass-footer ripple-btn shine-btn"
             style="display:block;text-align:center;padding:0.95rem 1.5rem;border-radius:100px;font-size:0.95rem;font-weight:600;text-decoration:none;letter-spacing:0.01em;"
             onmouseover="this.style.transform='translateY(-2px)'"
@@ -551,16 +561,17 @@
           >Get Started</a>
         </div>
 
-        <!-- PRO -->
+        <!-- ECOSYSTEM -->
         <div class="price-card reveal reveal-delay-2">
           <div style="margin-bottom:1.75rem;">
-            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8C8880;margin:0 0 0.75rem;">Pro</p>
+            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8C8880;margin:0 0 0.75rem;">Ecosystem</p>
             <div style="display:flex;align-items:baseline;gap:0.35rem;margin-bottom:0.4rem;">
-              <span style="font-size:3rem;font-weight:800;letter-spacing:-0.04em;color:#1A1916;line-height:1;">$1,500</span>
+              <span style="font-size:3rem;font-weight:800;letter-spacing:-0.04em;color:#1A1916;line-height:1;">$1,499</span>
               <span style="font-size:0.9rem;color:#8C8880;font-weight:500;">upfront</span>
             </div>
-            <p style="font-size:0.82rem;color:#8C8880;margin:0 0 1.25rem;">no lock-in · no payment until approved</p>
-            <p style="font-size:0.95rem;line-height:1.6;color:#5C5850;margin:0;">The full package — strategy, design, SEO, and ongoing support all in one.</p>
+            <p style="font-size:0.82rem;color:#8C8880;margin:0 0 0.25rem;">no lock-in · no payment until approved</p>
+            <p style="font-size:0.78rem;color:#8C8880;margin:0 0 1.25rem;">+ $100/month hosting &amp; maintenance</p>
+            <p style="font-size:0.95rem;line-height:1.6;color:#5C5850;margin:0;">The full package — complete multi-page website, full brand identity, advanced interactions, and priority ongoing support.</p>
           </div>
 
           <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
@@ -593,7 +604,7 @@
             </li>
           </ul>
 
-          <a href="contact.html?plan=pro"
+          <a href="contact.html?plan=ecosystem"
             class="btn-dark ripple-btn shine-btn"
             style="display:block;text-align:center;padding:0.95rem 1.5rem;border-radius:100px;font-size:0.95rem;font-weight:600;text-decoration:none;letter-spacing:0.01em;"
             onmouseover="this.style.transform='translateY(-2px)'"
@@ -608,7 +619,7 @@
       <!-- Universal note -->
       <p class="reveal" style="text-align:center;font-size:0.85rem;color:#8C8880;margin:2rem 0 0;line-height:1.65;">
         All packages include a free discovery call. No payment until you approve the design.<br/>
-        Hosting is an additional <strong style="color:#5C5850;">$50/month</strong> for all plans.
+        Hosting &amp; maintenance is <strong style="color:#5C5850;">$100/month</strong> — covers server space, bandwidth, backups, SSL, uptime monitoring, minor updates, and ongoing support.
       </p>
     </div>
   </section>
@@ -617,11 +628,11 @@
   <!-- ═══════════════════════════════════
        WHAT'S INCLUDED
   ═══════════════════════════════════ -->
-  <section style="padding:5rem 1.5rem;background:#fffbef;" aria-label="What's included">
+  <section style="padding:5rem 1.5rem;background:#fff2c9;" aria-label="What's included">
     <div style="max-width:1160px;margin:0 auto;">
 
       <div style="text-align:center;margin-bottom:3.5rem;">
-        <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem);color:#1A1916;margin:0 0 1rem;">
+        <h2 class="reveal" style="font-size:clamp(2.5rem,4vw,3.5rem);color:#1A1916;margin:0 0 1rem;">
           Every website we build includes
         </h2>
         <p class="reveal reveal-delay-1" style="font-size:1rem;color:#5C5850;line-height:1.7;max-width:480px;margin:0 auto;">
@@ -636,7 +647,7 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <h3 style="font-size:1rem;color:#1A1916;margin:0 0 0.6rem;">Fast Load Times</h3>
-          <p style="font-size:0.9rem;line-height:1.7;color:#5C5850;margin:0;">Optimised images, clean code, and performance-first architecture. Google rewards fast sites with better rankings.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:#5C5850;margin:0;">Optimised images, clean code, and a build that's fast from the ground up. Google rewards fast sites with better rankings.</p>
         </div>
 
         <div class="service-card reveal reveal-delay-1">
@@ -644,7 +655,7 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
           </div>
           <h3 style="font-size:1rem;color:#1A1916;margin:0 0 0.6rem;">Mobile-First Design</h3>
-          <p style="font-size:0.9rem;line-height:1.7;color:#5C5850;margin:0;">Over 70% of local business searches happen on phones. Your site will look and work perfectly on every screen size.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:#5C5850;margin:0;">Over 70% of local business searches happen on phones. Your site will look and work properly on any device, not just a desktop.</p>
         </div>
 
         <div class="service-card reveal reveal-delay-2">
@@ -691,7 +702,7 @@
     <div style="max-width:760px;margin:0 auto;">
 
       <div style="text-align:center;margin-bottom:3rem;">
-        <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem);color:#1A1916;margin:0 0 0.75rem;">Common questions</h2>
+        <h2 class="reveal" style="font-size:clamp(2.5rem,4vw,3.5rem);color:#1A1916;margin:0 0 0.75rem;">Common questions</h2>
         <p class="reveal reveal-delay-1" style="font-size:1rem;color:#5C5850;line-height:1.7;margin:0;">Straight answers. No jargon.</p>
       </div>
 
@@ -703,7 +714,7 @@
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#8C8880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="faq-body">
-            <p class="faq-body-inner">Hosting ($50/month) covers server space, bandwidth, daily backups, SSL renewal, uptime monitoring, and minor text/image updates on request. It keeps your site live, secure, and maintained without you needing to think about it.</p>
+            <p class="faq-body-inner">Hosting &amp; maintenance ($100/month) covers server space, bandwidth, daily backups, SSL renewal, uptime monitoring, minor content updates, and ongoing support. It keeps your site live, secure, and looked after — without you needing to think about it.</p>
           </div>
         </div>
 
@@ -713,7 +724,7 @@
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#8C8880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="faq-body">
-            <p class="faq-body-inner">Most websites are delivered in 7–14 days from the discovery call. More complex Pro builds can take up to 3 weeks. We work fast and communicate clearly throughout the whole process.</p>
+            <p class="faq-body-inner">Most websites are delivered in 7–14 days from the discovery call. More complex Pro builds can take up to 3 weeks. We move quickly and keep you across every step.</p>
           </div>
         </div>
 
@@ -733,7 +744,7 @@
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#8C8880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="faq-body">
-            <p class="faq-body-inner">Absolutely. Many businesses start with Starter and upgrade to Growth once they see the results. We'll credit what you've already paid toward the upgrade — you only pay the difference.</p>
+            <p class="faq-body-inner">Absolutely. Many businesses start with Foundation and upgrade to Architecture or Ecosystem once they see the results. We'll credit what you've already paid toward the upgrade — you only pay the difference.</p>
           </div>
         </div>
 
@@ -772,7 +783,7 @@
           <em style="font-style:italic;color:rgba(255,255,255,0.45);">20-minute call.</em>
         </h2>
         <p class="reveal reveal-delay-2" style="font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto 2.5rem;">
-          We'll look at your business, tell you exactly what you need, and give you an honest recommendation — no sales pitch.
+          We'll look at your business and tell you exactly what makes sense — even if that's a cheaper option than you came in expecting.
         </p>
         <div class="reveal reveal-delay-3">
           <a href="contact.html"

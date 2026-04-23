@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Flooma Web Development</title>
   <meta name="description" content="Get in touch with Flooma. Tell us about your project and we'll give you a straight answer on what you need." />
+  <meta property="og:title" content="Contact — Flooma Web Development"/>
+  <meta property="og:description" content="Get in touch with Flooma. Tell us about your project and we'll give you a straight answer on what you need."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://flooma.agency/contact.html"/>
+  <link rel="canonical" href="https://flooma.agency/contact.html"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Flooma",
+    "url": "https://flooma.agency",
+    "description": "Flooma builds fast, conversion-focused websites for growing businesses.",
+    "serviceType": ["Web Design", "Web Development", "SEO", "Web Hosting"],
+    "priceRange": "$499 - $1499"
+  }
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,8 +37,8 @@
           },
           colors: {
             fl: {
-              bg:      '#fff7e0',
-              bgDeep:  '#fffbef',
+              bg:      '#faf9f6',
+              bgDeep:  '#fff7e0',
               surface: 'rgba(255,255,255,0.72)',
               ink:     '#1A1916',
               muted:   '#5C5850',
@@ -104,37 +120,41 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 50;
-      transition: background 0.4s cubic-bezier(0.4,0,0.2,1),
-                  box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
-      background: transparent;
+      transition: box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
+      background: rgba(0, 0, 0, 1);
     }
     #navbar.scrolled {
-      background: rgba(240, 237, 227, 0.88);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      box-shadow: 0 4px 24px rgba(26,25,22,0.07);
-    }
-    #logo-img {
-      transition: filter 0.4s cubic-bezier(0.4,0,0.2,1);
-      filter: brightness(0) drop-shadow(0 1px 3px rgba(0,0,0,0.08));
+      background: rgba(0, 0, 0, 1);
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
     }
     .nav-link {
       font-family: 'Unispace', monospace;
-      color: #5C5850;
-      font-size: 0.72rem;
-      font-weight: 400;
+      font-size: 11px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
       transition: color 0.2s ease;
     }
-    .nav-link:hover { color: #1A1916; }
-    .nav-link.active { color: #1A1916; }
-    #nav-cta {
-      font-family: 'Unispace', monospace !important;
-      background: #1C1A14 !important;
-      color: #fff !important;
-      box-shadow: 0 4px 20px rgba(28,26,20,0.25) !important;
+    .nav-link:hover { color: #ffffff; }
+    .nav-link.active { color: #ffffff; }
+    .nav-cta-main {
+      font-family: 'Unispace', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid rgba(255,255,255,0.55);
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .nav-cta-main:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.08);
     }
     @media (max-width: 767px) {
       .desktop-nav { display: none !important; }
@@ -412,7 +432,7 @@
        NAVIGATION
   ═══════════════════════════════════ -->
   <nav id="navbar" role="navigation" aria-label="Main navigation">
-    <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;height:72px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="max-width:1440px;margin:0 auto;padding:0 4rem;height:80px;display:flex;align-items:center;justify-content:space-between;">
 
       <!-- Logo -->
       <a href="index.html" aria-label="Flooma home" style="display:flex;align-items:center;flex-shrink:0;">
@@ -431,17 +451,7 @@
       </div>
 
       <!-- CTA -->
-      <a href="contact.html"
-        style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.4rem;border-radius:100px;font-size:0.875rem;font-weight:500;letter-spacing:0.01em;cursor:pointer;text-decoration:none;transition:transform 0.25s cubic-bezier(0.34,1.3,0.64,1);"
-        class="btn-dark ripple-btn shine-btn"
-        id="nav-cta"
-        onmouseover="this.style.transform='scale(1.03)'"
-        onmouseout="this.style.transform=''"
-        onfocus="this.style.outline='2px solid rgba(28,26,20,0.5)';this.style.outlineOffset='3px'"
-        onblur="this.style.outline=''"
-      >
-        Get in Touch
-      </a>
+      <a href="contact.html" class="nav-cta-main desktop-nav">Get in Touch</a>
     </div>
   </nav>
 
@@ -449,7 +459,7 @@
   <!-- ═══════════════════════════════════
        HERO
   ═══════════════════════════════════ -->
-  <section style="position:relative;padding:9rem 1.5rem 5rem;overflow:hidden;background:#fff7e0;" aria-label="Contact hero">
+  <section style="position:relative;padding:9rem 1.5rem 5rem;overflow:hidden;background:#faf9f6;" aria-label="Contact hero">
 
     <!-- Ambient blobs -->
     <div class="blob" id="drift-c1" style="width:480px;height:480px;background:rgba(28,26,20,0.04);top:-100px;right:-80px;" aria-hidden="true"></div>
@@ -476,7 +486,7 @@
   <!-- ═══════════════════════════════════
        CONTACT FORM + INFO
   ═══════════════════════════════════ -->
-  <section style="padding:0 1.5rem 5rem;background:#fff7e0;" aria-label="Contact form and details">
+  <section style="padding:0 1.5rem 5rem;background:#faf9f6;" aria-label="Contact form and details">
     <div style="max-width:1100px;margin:0 auto;">
 
       <div class="contact-grid" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:3rem;align-items:start;">
@@ -487,7 +497,7 @@
 
             <!-- Form content -->
             <div class="form-content" id="form-content">
-              <h2 style="font-size:1.4rem;color:#1A1916;margin:0 0 0.4rem;">Send us a message</h2>
+              <h2 style="font-size:1.75rem;color:#1A1916;margin:0 0 0.4rem;">Send us a message</h2>
               <p style="font-size:0.9rem;color:#8C8880;margin:0 0 2rem;line-height:1.6;">Usually respond within a few hours. Not a bot.</p>
 
               <form id="contact-form" novalidate>
@@ -512,9 +522,9 @@
                   <div class="form-select-wrap">
                     <select class="form-select" id="plan" name="plan">
                       <option value="">Not sure yet</option>
-                      <option value="starter">Starter — $500</option>
-                      <option value="growth">Growth — $1,000</option>
-                      <option value="pro">Pro — $1,500</option>
+                      <option value="foundation">Foundation — $499</option>
+                      <option value="architecture">Architecture — $999</option>
+                      <option value="ecosystem">Ecosystem — $1,499</option>
                     </select>
                   </div>
                 </div>
@@ -642,11 +652,11 @@
   <!-- ═══════════════════════════════════
        FAQ
   ═══════════════════════════════════ -->
-  <section style="padding:4rem 1.5rem 5rem;background:#fffbef;" aria-label="Frequently asked questions">
+  <section style="padding:4rem 1.5rem 5rem;background:#fff7e0;" aria-label="Frequently asked questions">
     <div style="max-width:760px;margin:0 auto;">
 
       <div style="text-align:center;margin-bottom:3rem;">
-        <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem);color:#1A1916;margin:0 0 0.75rem;">Before you hit send</h2>
+        <h2 class="reveal" style="font-size:clamp(2.5rem,4vw,3.5rem);color:#1A1916;margin:0 0 0.75rem;">Before you hit send</h2>
         <p class="reveal reveal-delay-1" style="font-size:1rem;color:#5C5850;line-height:1.7;margin:0;">A few things people usually ask.</p>
       </div>
 
@@ -688,7 +698,7 @@
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#8C8880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="faq-body">
-            <p class="faq-body-inner">We work fully remotely so there are no geographic limits. Our focus is small local businesses — wherever you're based, if that describes you, we'd love to help.</p>
+            <p class="faq-body-inner">We work remotely, so location doesn't matter. Our focus is small local businesses — wherever you're based, if that describes you, we'd be glad to help.</p>
           </div>
         </div>
 
