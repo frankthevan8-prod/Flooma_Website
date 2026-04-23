@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flooma Agency</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unispace&display=swap" rel="stylesheet">
+<style>
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+  #navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    transition: background 0.4s cubic-bezier(0.4,0,0.2,1),
+                box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
+    background: transparent;
+  }
+  #navbar.scrolled {
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  .nav-link-main {
+    font-family: 'Unispace', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .nav-link-main:hover { color: #ffffff; }
+  .nav-cta-main {
+    font-family: 'Unispace', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .nav-cta-main:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.08);
+  }
+  .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up.delay-1 { transition-delay: 0.08s; }
+  .fade-up.delay-2 { transition-delay: 0.16s; }
+  .fade-up.delay-3 { transition-delay: 0.24s; }
+  .fade-up.delay-4 { transition-delay: 0.32s; }
+</style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface": "#fff7e0",
+          "on-error": "#ffffff",
+          "tertiary-container": "#1c1b1a",
+          "background": "#fff7e0",
+          "secondary-container": "#e3dfd5",
+          "tertiary-fixed-dim": "#cac6c4",
+          "on-background": "#1c1c15",
+          "inverse-primary": "#c8c6c5",
+          "surface-container-low": "#fffbef",
+          "on-secondary-fixed-variant": "#484740",
+          "on-secondary-fixed": "#1c1c16",
+          "on-primary-fixed-variant": "#474746",
+          "surface-tint": "#5f5e5e",
+          "surface-container-lowest": "#ffffff",
+          "primary-fixed": "#e5e2e1",
+          "surface-container-highest": "#e6e3d7",
+          "on-tertiary-fixed-variant": "#484645",
+          "surface-variant": "#e6e3d7",
+          "surface-container-high": "#ebe8dc",
+          "on-tertiary-container": "#868382",
+          "on-secondary": "#ffffff",
+          "secondary-fixed": "#e6e2d8",
+          "surface-dim": "#dddace",
+          "tertiary": "#000000",
+          "on-surface-variant": "#444748",
+          "outline-variant": "#c4c7c7",
+          "surface-bright": "#fff7e0",
+          "on-surface": "#1c1c15",
+          "secondary": "#605e57",
+          "primary-fixed-dim": "#c8c6c5",
+          "on-primary-container": "#858383",
+          "on-primary": "#ffffff",
+          "error": "#ba1a1a",
+          "on-error-container": "#93000a",
+          "on-tertiary-fixed": "#1c1b1a",
+          "tertiary-fixed": "#e6e2df",
+          "inverse-on-surface": "#f4f1e5",
+          "error-container": "#ffdad6",
+          "primary": "#000000",
+          "on-tertiary": "#ffffff",
+          "secondary-fixed-dim": "#cac6bd",
+          "on-primary-fixed": "#1c1b1b",
+          "inverse-surface": "#313129",
+          "primary-container": "#1c1b1b",
+          "on-secondary-container": "#64635b",
+          "outline": "#747878",
+          "surface-container": "#f1eee2",
+          "custom-cream": "#fff7e0"
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem",
+          lg: "0.5rem",
+          xl: "0.75rem",
+          full: "9999px"
+        },
+        spacing: {
+          gutter: "24px",
+          "container-max": "1440px",
+          unit: "4px",
+          margin: "64px"
+        },
+        fontFamily: {
+          "label-caps": ["'Inter'", "Arial", "'Helvetica Neue'", "Helvetica", "sans-serif"],
+          "headline-md": ["'Inter'", "Arial", "'Helvetica Neue'", "Helvetica", "sans-serif"],
+          "headline-lg": ["'Inter'", "Arial", "'Helvetica Neue'", "Helvetica", "sans-serif"],
+          "body-main": ["'Inter'", "Arial", "'Helvetica Neue'", "Helvetica", "sans-serif"],
+          "display-xl": ["'Inter'", "Arial", "'Helvetica Neue'", "Helvetica", "sans-serif"],
+          "body-sm": ["'Inter'", "Arial", "'Helvetica Neue'", "Helvetica", "sans-serif"]
+        },
+        fontSize: {
+          "label-caps": ["12px", { lineHeight: "12px", letterSpacing: "0.05em", fontWeight: "500" }],
+          "headline-md": ["32px", { lineHeight: "30px", letterSpacing: "-1.28px", fontWeight: "300" }],
+          "headline-lg": ["48px", { lineHeight: "44px", letterSpacing: "-1.92px", fontWeight: "300" }],
+          "body-main": ["21px", { lineHeight: "17.85px", letterSpacing: "-0.84px", fontWeight: "500" }],
+          "display-xl": ["84px", { lineHeight: "80px", letterSpacing: "-3.36px", fontWeight: "300" }],
+          "body-sm": ["16px", { lineHeight: "16px", letterSpacing: "-0.32px", fontWeight: "500" }]
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-custom-cream text-on-background font-body-main antialiased selection:bg-primary selection:text-on-primary">
+
+<!-- Nav -->
+<nav id="navbar">
+  <div class="max-w-[1440px] mx-auto px-16 flex justify-between items-center h-20">
+    <a class="flex items-center" href="#">
+      <img alt="Flooma logo" style="height:80px;width:auto;object-fit:contain;" src="brand_assets/floomaWhitePNG.png"/>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="nav-link-main" href="#services">Services</a>
+      <a class="nav-link-main" href="pricing.html">Pricing</a>
+      <a class="nav-link-main" href="contact.html">Contact</a>
+    </div>
+    <a class="nav-cta-main hidden md:block" href="contact.html">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- Hero (full-screen, outside main container) -->
+<section class="h-screen relative overflow-hidden flex flex-col justify-start px-margin">
+  <video
+    src="brand_assets/Hero Animation.mp4"
+    autoplay muted loop playsinline
+    preload="auto"
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover z-0"
+  ></video>
+  <div class="relative z-[2] pt-[10vh] pl-14">
+    <h1 class="font-display-xl text-display-xl text-white font-black">
+      WE BUILD WEBSITES<br/>THAT CONVERT.
+    </h1>
+    <div class="mt-8">
+      <a href="contact.html"
+        style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 2rem;font-family:'Unispace',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,0.5);text-decoration:none;transition:background 0.2s ease,border-color 0.2s ease;"
+        onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.85)'"
+        onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,0.5)'"
+      >Let's talk &rarr;</a>
+    </div>
+  </div>
+  <div class="absolute left-8 top-1/2 -translate-y-1/2 vertical-text font-label-caps text-label-caps text-white/40 tracking-[0.2em] uppercase font-thin hidden md:block z-[2]">01 / Introduction</div>
+</section>
+
+<!-- Main -->
+<main class="max-w-container-max mx-auto">
+
+  <!-- Intro Text -->
+  <section class="px-margin py-28 md:py-40">
+    <div class="max-w-[860px]">
+      <p id="intro-text" class="font-medium" style="font-size:clamp(24px,2.8vw,38px);line-height:1.38;letter-spacing:-0.03em;color:#1c1c15;">We build websites that actually work. Fast, focused, built around what your business needs most: more customers. Handling everything from design to launch, and we're with you every step of the way.</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="px-margin py-24 relative">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+      <div class="md:col-span-4 flex flex-col">
+        <h2 class="font-label-caps text-label-caps uppercase text-on-surface-variant font-thin mb-3">Services</h2>
+        <div class="flex-1 bg-surface-variant hidden md:block overflow-hidden" style="min-height:300px;">
+          <img alt="Services" class="w-full h-full object-cover object-top" src="brand_assets/computer falling.png"/>
+        </div>
+      </div>
+      <div class="md:col-span-8">
+        <div class="flex flex-col border-t border-inverse-primary">
+
+          <div class="grid grid-cols-12 gap-gutter py-8 border-b border-inverse-primary group hover:bg-surface-container-low transition-colors duration-300 fade-up delay-1">
+            <div class="col-span-1">
+              <span class="font-body-sm text-body-sm text-on-surface-variant font-thin">01</span>
+            </div>
+            <div class="col-span-11">
+              <div class="flex flex-col items-end text-right group-hover:-translate-x-2 transition-transform duration-300">
+                <h3 class="font-headline-md text-headline-md text-primary mb-4 font-black">Website Design</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
+                  We design websites around what your visitors actually do. Every page has a job, and we make sure it does it well. Clear layouts, strong hierarchy, nothing that gets in the way of a sale.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 gap-gutter py-8 border-b border-inverse-primary group hover:bg-surface-container-low transition-colors duration-300 fade-up delay-2">
+            <div class="col-span-1">
+              <span class="font-body-sm text-body-sm text-on-surface-variant font-thin">02</span>
+            </div>
+            <div class="col-span-11">
+              <div class="flex flex-col items-end text-right group-hover:-translate-x-2 transition-transform duration-300">
+                <h3 class="font-headline-md text-headline-md text-primary mb-4 font-black">Website Development</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
+                  Clean, fast code written from scratch. No page builders, no bloated themes. We build it ourselves so it loads quickly, breaks less often, and does exactly what you need it to do.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 gap-gutter py-8 border-b border-inverse-primary group hover:bg-surface-container-low transition-colors duration-300 fade-up delay-3">
+            <div class="col-span-1">
+              <span class="font-body-sm text-body-sm text-on-surface-variant font-thin">03</span>
+            </div>
+            <div class="col-span-11">
+              <div class="flex flex-col items-end text-right group-hover:-translate-x-2 transition-transform duration-300">
+                <h3 class="font-headline-md text-headline-md text-primary mb-4 font-black">SEO</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
+                  If nobody can find you, the website doesn't matter. We get the technical side right from the start, structure your content properly, and make sure search engines understand what you actually do.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 gap-gutter py-8 border-b border-inverse-primary group hover:bg-surface-container-low transition-colors duration-300 fade-up delay-4">
+            <div class="col-span-1">
+              <span class="font-body-sm text-body-sm text-on-surface-variant font-thin">04</span>
+            </div>
+            <div class="col-span-11">
+              <div class="flex flex-col items-end text-right group-hover:-translate-x-2 transition-transform duration-300">
+                <h3 class="font-headline-md text-headline-md text-primary mb-4 font-black">Hosting / Maintenance</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
+                  We keep the lights on. Security updates, speed checks, content changes, backups — all handled by the same people who built your site, so nothing falls through the cracks.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="absolute right-8 top-1/2 -translate-y-1/2 vertical-text font-label-caps text-label-caps text-outline tracking-[0.2em] uppercase font-thin hidden md:block">02 / Services</div>
+  </section>
+
+  <!-- Studio -->
+  <section class="px-margin py-24 bg-surface-container-low relative">
+    <div class="grid grid-cols-12 gap-gutter">
+      <div class="col-span-12 md:col-span-4 flex flex-col justify-end">
+        <h2 class="font-headline-lg text-headline-lg text-primary mb-8 font-black">THE STUDIO</h2>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mb-12">
+          We're Frank and Shaymus, two developers who got fed up watching local businesses pay thousands for average work from agencies that didn't really care. We started Flooma to fix that. No inflated quotes, no account managers in the middle. Just the two of us, building things properly and charging a fair price for it.
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-8">
+        <div class="grid grid-cols-2 gap-unit">
+          <div class="col-span-2 aspect-[16/9] bg-surface-variant overflow-hidden">
+            <img alt="Studio workspace" class="w-full h-full object-cover" src="brand_assets/computer in grass.png"/>
+          </div>
+          <div class="col-span-1 aspect-square bg-surface-variant">
+            <img alt="Design work" class="w-full h-full object-cover grayscale" src="https://placehold.co/600x600/e6e3d7/444748"/>
+          </div>
+          <div class="col-span-1 aspect-square bg-surface-variant">
+            <img alt="Process detail" class="w-full h-full object-cover grayscale" src="https://placehold.co/600x600/dddace/444748"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute left-8 top-1/2 -translate-y-1/2 vertical-text font-label-caps text-label-caps text-outline tracking-[0.2em] uppercase font-thin hidden md:block">03 / Studio</div>
+  </section>
+
+  <!-- Engagement Models -->
+  <section class="max-w-container-max mx-auto px-margin mb-32 relative pt-24 border-t border-secondary-container">
+    <h2 class="font-headline-lg text-headline-lg mb-16 font-black text-center">Engagement Models</h2>
+    <div class="flex flex-col border-y border-primary divide-y divide-primary">
+
+      <div class="flex flex-col md:flex-row items-baseline justify-between py-12 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer">
+        <div class="flex-1">
+          <h3 class="font-headline-md text-headline-md font-black mb-2 group-hover:pl-4 transition-all duration-300">Foundation</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Basic brand identity, single-page landing site, typography and colour palette.</p>
+        </div>
+        <div class="text-right">
+          <span class="font-display-xl text-display-xl font-black leading-none">$499</span>
+          <span class="block font-label-caps text-label-caps text-outline uppercase mt-2 tracking-widest">Base Retainer</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-baseline justify-between py-12 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer relative">
+        <div class="absolute top-4 right-4 bg-primary text-on-primary font-label-caps text-label-caps uppercase px-4 py-1 text-[10px] hidden md:block">Popular</div>
+        <div class="flex-1">
+          <h3 class="font-headline-md text-headline-md font-black mb-2 group-hover:pl-4 transition-all duration-300">Architecture</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Full brand system, multi-page website, e-commerce if needed, one month of support.</p>
+        </div>
+        <div class="text-right">
+          <span class="font-display-xl text-display-xl font-black leading-none">$999</span>
+          <span class="block font-label-caps text-label-caps text-outline uppercase mt-2 tracking-widest">Fixed Fee</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-baseline justify-between py-12 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer">
+        <div class="flex-1">
+          <h3 class="font-headline-md text-headline-md font-black mb-2 group-hover:pl-4 transition-all duration-300">Ecosystem</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Full digital product build, brand identity, advanced interactions, and priority ongoing support.</p>
+        </div>
+        <div class="text-right">
+          <span class="font-display-xl text-display-xl font-black leading-none">$1499</span>
+          <span class="block font-label-caps text-label-caps text-outline uppercase mt-2 tracking-widest">Retainer</span>
+        </div>
+      </div>
+
+    </div>
+    <p class="mt-8 text-center font-body-sm text-body-sm text-on-surface-variant">See the full breakdown on our <a href="pricing.html" class="text-primary underline hover:opacity-60 transition-opacity">pricing page</a>.</p>
+    <div class="absolute right-8 top-32 vertical-text font-label-caps text-label-caps text-outline tracking-[0.2em] uppercase font-thin hidden md:block">04 / Models</div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <!-- CTA section (cream) -->
+  <div style="background:#fff7e0;">
+    <div class="max-w-[1440px] mx-auto px-16 py-24 flex flex-col items-center">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-8 text-center font-black">READY TO BUILD THE FUTURE?</h2>
+      <a href="contact.html" style="display:inline-block;padding:1rem 2rem;background:#000;color:#fff;font-family:'Unispace',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Get in Touch</a>
+    </div>
+  </div>
+  <!-- Bottom row (black) -->
+  <div style="background:#0F0E0B;">
+    <div class="max-w-[1440px] mx-auto px-16 py-12 flex flex-col md:flex-row justify-between items-center gap-8">
+      <a href="#" style="display:flex;align-items:center;opacity:0.6;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
+        <img alt="Flooma logo" style="height:80px;width:auto;object-fit:contain;" src="brand_assets/floomaWhitePNG.png"/>
+      </a>
+      <div class="flex flex-wrap justify-center gap-8" style="font-family:'Unispace',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">
+        <a style="color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s ease;" href="#" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Privacy Policy</a>
+        <a style="color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s ease;" href="#" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Terms of Service</a>
+        <a style="color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s ease;" href="#" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Instagram</a>
+        <a style="color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s ease;" href="#" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">LinkedIn</a>
+      </div>
+      <div style="font-family:'Unispace',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.28);">
+        &copy; 2025 Flooma Agency. All rights reserved.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar
+  const navbar = document.getElementById('navbar');
+  function updateNav() { navbar.classList.toggle('scrolled', window.scrollY > 40); }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // Word-by-word scroll reveal (MagicText pattern)
+  const introEl = document.getElementById('intro-text');
+  if (introEl) {
+    const words = introEl.textContent.trim().split(/\s+/);
+    introEl.innerHTML = words.map(w =>
+      `<span style="opacity:0.12;transition:opacity 0.35s ease;display:inline;">${w}</span>`
+    ).join(' ');
+    const wordSpans = introEl.querySelectorAll('span');
+
+    function updateWords() {
+      const rect = introEl.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // progress 0 → word top at 90% vh; progress 1 → word top at 25% vh
+      const p = Math.max(0, Math.min(1, (vh * 0.9 - rect.top) / (vh * 0.65)));
+      wordSpans.forEach((s, i) => {
+        s.style.opacity = p >= i / wordSpans.length ? '1' : '0.12';
+      });
+    }
+    window.addEventListener('scroll', updateWords, { passive: true });
+    window.addEventListener('resize', updateWords);
+    updateWords();
+  }
+
+  // Fade-up entrance for sections
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+</script>
+
+</body>
+</html>

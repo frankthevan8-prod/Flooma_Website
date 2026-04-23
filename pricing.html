@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Flooma Web Development</title>
+  <meta name="description" content="Simple, transparent pricing for premium web development. No lock-in. No hidden fees. Starting from $500." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unispace&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ["'Inter'", 'Arial', "'Helvetica Neue'", 'Helvetica', 'sans-serif'],
+            body:    ["'Inter'", 'Arial', "'Helvetica Neue'", 'Helvetica', 'sans-serif'],
+          },
+          colors: {
+            fl: {
+              bg:      '#fff7e0',
+              bgDeep:  '#fffbef',
+              surface: 'rgba(255,255,255,0.72)',
+              ink:     '#1A1916',
+              muted:   '#5C5850',
+              subtle:  '#8C8880',
+              accent:  '#1C1A14',
+              accentL: '#3A3830',
+              accentD: '#0D0C0A',
+              dark:    '#0F0E0B',
+            }
+          },
+          letterSpacing: {
+            tightest: '-0.04em',
+            tighter2: '-0.03em',
+          },
+          boxShadow: {
+            glass:     '0 8px 32px rgba(9,14,30,0.08), 0 1px 0 rgba(255,255,255,0.7) inset',
+            glassHover:'0 16px 48px rgba(9,14,30,0.14), 0 1px 0 rgba(255,255,255,0.8) inset',
+            card:      '0 2px 16px rgba(9,14,30,0.06), 0 1px 0 rgba(255,255,255,0.9) inset',
+            cardHover: '0 12px 40px rgba(28,26,20,0.12), 0 1px 0 rgba(255,255,255,0.95) inset',
+            btn:       '0 4px 24px rgba(28,26,20,0.3), 0 1px 0 rgba(255,255,255,0.25) inset',
+            btnHover:  '0 8px 32px rgba(28,26,20,0.45), 0 1px 0 rgba(255,255,255,0.3) inset',
+          },
+          backdropBlur: {
+            glass: '24px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    h1 {
+      font-family: 'Inter', Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.05em !important;
+    }
+    h2 {
+      font-family: 'Inter', Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.04em !important;
+    }
+    h3 {
+      font-family: 'Inter', Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.02em !important;
+    }
+    body {
+      font-family: 'Inter', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+      font-weight: 400;
+      background-color: #fff7e0;
+      color: #1A1916;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Glass surface ─── */
+    .glass {
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      box-shadow: 0 8px 32px rgba(9,14,30,0.08), 0 1px 0 rgba(255,255,255,0.7) inset;
+    }
+    .glass-dark {
+      background: rgba(9, 14, 30, 0.55);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.24), 0 1px 0 rgba(255,255,255,0.08) inset;
+    }
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.01);
+      background-blend-mode: luminosity;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: none;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ─── Nav ─── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      transition: background 0.4s cubic-bezier(0.4,0,0.2,1),
+                  box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
+      background: transparent;
+    }
+    #navbar.scrolled {
+      background: rgba(240, 237, 227, 0.88);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      box-shadow: 0 4px 24px rgba(26,25,22,0.07);
+    }
+    #logo-img {
+      transition: filter 0.4s cubic-bezier(0.4,0,0.2,1);
+      filter: brightness(0) drop-shadow(0 1px 3px rgba(0,0,0,0.08));
+    }
+    .nav-link {
+      font-family: 'Unispace', monospace;
+      color: #5C5850;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+    .nav-link:hover { color: #1A1916; }
+    .nav-link.active { color: #1A1916; }
+    #nav-cta {
+      font-family: 'Unispace', monospace !important;
+      background: #1C1A14 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: 0 4px 20px rgba(28,26,20,0.25) !important;
+      color: #fff !important;
+    }
+    @media (max-width: 767px) {
+      .desktop-nav { display: none !important; }
+    }
+
+    /* ─── Animations ─── */
+    @keyframes fade-rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .anim-fade-up {
+      opacity: 0;
+      animation: fade-rise 0.8s ease-out both;
+    }
+    .anim-delay-1 { animation-delay: 0.1s; }
+    .anim-delay-2 { animation-delay: 0.25s; }
+    .anim-delay-3 { animation-delay: 0.4s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      filter: blur(8px);
+      transition: opacity 0.7s cubic-bezier(0.34, 1.1, 0.64, 1),
+                  transform 0.7s cubic-bezier(0.34, 1.1, 0.64, 1),
+                  filter 0.7s cubic-bezier(0.34, 1.1, 0.64, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* ─── Blob decorations ─── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    /* ─── Pricing cards ─── */
+    .price-card {
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 24px rgba(9,14,30,0.07), 0 1px 0 rgba(255,255,255,1) inset;
+      border-radius: 22px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.34, 1.3, 0.64, 1),
+                  box-shadow 0.3s ease;
+    }
+    .price-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(28,26,20,0.1), 0 4px 16px rgba(28,26,20,0.05), 0 1px 0 rgba(255,255,255,1) inset;
+    }
+    .price-card.featured {
+      background: #1C1A14;
+      box-shadow: 0 8px 40px rgba(28,26,20,0.3), 0 1px 0 rgba(255,255,255,0.08) inset;
+    }
+    .price-card.featured:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(28,26,20,0.4), 0 1px 0 rgba(255,255,255,0.1) inset;
+    }
+
+    /* ─── Feature check icon ─── */
+    .check-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(28,26,20,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .featured .check-icon {
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* ─── FAQ accordion ─── */
+    .faq-item {
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 16px rgba(9,14,30,0.06), 0 1px 0 rgba(255,255,255,0.9) inset;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow 0.25s ease;
+    }
+    .faq-item.open {
+      box-shadow: 0 8px 32px rgba(9,14,30,0.1), 0 1px 0 rgba(255,255,255,0.95) inset;
+    }
+    .faq-trigger {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #1A1916;
+      transition: background 0.2s ease;
+    }
+    .faq-trigger:hover { background: rgba(28,26,20,0.02); }
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      transition: transform 0.3s cubic-bezier(0.34, 1.3, 0.64, 1);
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.34, 1.1, 0.64, 1);
+    }
+    .faq-item.open .faq-body { max-height: 300px; }
+    .faq-body-inner {
+      padding: 0 1.75rem 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #5C5850;
+    }
+
+    /* ─── Service cards ─── */
+    .service-card {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 24px rgba(9,14,30,0.07), 0 1px 0 rgba(255,255,255,1) inset;
+      border-radius: 22px;
+      padding: 2.25rem;
+      transition: transform 0.3s cubic-bezier(0.34, 1.3, 0.64, 1),
+                  box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(28,26,20,0.1), 0 4px 16px rgba(28,26,20,0.05), 0 1px 0 rgba(255,255,255,1) inset;
+    }
+
+    /* ─── Footer btn ─── */
+    .btn-glass-footer {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18), 0 1px 0 rgba(255,255,255,0.15) inset;
+      color: #fff;
+      transition: background 0.25s ease, box-shadow 0.25s ease,
+                  transform 0.25s cubic-bezier(0.34,1.3,0.64,1);
+    }
+    .btn-glass-footer:hover {
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.28), 0 1px 0 rgba(255,255,255,0.22) inset;
+      transform: translateY(-2px);
+    }
+    .btn-glass-footer:active { transform: translateY(0); }
+    .btn-glass-footer:focus-visible {
+      outline: 2px solid rgba(255,255,255,0.6);
+      outline-offset: 3px;
+    }
+
+    /* ─── Btn dark filled ─── */
+    .btn-dark {
+      background: #1C1A14;
+      box-shadow: 0 4px 24px rgba(28,26,20,0.3), 0 1px 0 rgba(255,255,255,0.25) inset;
+      color: #fff;
+      transition: background 0.25s ease, box-shadow 0.25s ease,
+                  transform 0.25s cubic-bezier(0.34,1.3,0.64,1);
+    }
+    .btn-dark:hover {
+      background: #3A3830;
+      box-shadow: 0 8px 32px rgba(28,26,20,0.45), 0 1px 0 rgba(255,255,255,0.3) inset;
+      transform: translateY(-2px);
+    }
+    .btn-dark:active { transform: translateY(0); }
+    .btn-dark:focus-visible {
+      outline: 2px solid rgba(28,26,20,0.5);
+      outline-offset: 3px;
+    }
+
+    /* ─── Ripple + shine ─── */
+    .ripple-btn { position: relative; overflow: hidden; }
+    .shine-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -80%;
+      width: 55%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.28) 50%, transparent 80%);
+      transform: skewX(-15deg);
+      pointer-events: none;
+      transition: left 0s;
+    }
+    .shine-btn:hover::after { left: 150%; transition: left 0.48s ease; }
+    @keyframes btn-ripple {
+      from { transform: scale(0); opacity: 0.45; }
+      to   { transform: scale(4); opacity: 0; }
+    }
+    .ripple-wave {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      pointer-events: none;
+      animation: btn-ripple 0.55s ease-out forwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════ -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;height:72px;display:flex;align-items:center;justify-content:space-between;">
+
+      <!-- Logo -->
+      <a href="index.html" aria-label="Flooma home" style="display:flex;align-items:center;flex-shrink:0;">
+        <img id="logo-img"
+          src="brand_assets/floomaWhitePNG.png"
+          alt="Flooma"
+          style="height:80px;width:auto;object-fit:contain;"
+        />
+      </a>
+
+      <!-- Desktop links -->
+      <div style="display:flex;align-items:center;gap:2.5rem;" class="desktop-nav">
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link active">Pricing</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <!-- CTA -->
+      <a href="contact.html"
+        style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.4rem;border-radius:100px;font-size:0.875rem;font-weight:500;letter-spacing:0.01em;cursor:pointer;text-decoration:none;transition:transform 0.25s cubic-bezier(0.34,1.3,0.64,1),box-shadow 0.25s ease;"
+        class="btn-dark ripple-btn shine-btn"
+        id="nav-cta"
+        onmouseover="this.style.transform='scale(1.03)'"
+        onmouseout="this.style.transform=''"
+        onfocus="this.style.outline='2px solid rgba(28,26,20,0.5)';this.style.outlineOffset='3px'"
+        onblur="this.style.outline=''"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════
+       HERO
+  ═══════════════════════════════════ -->
+  <section style="position:relative;padding:9rem 1.5rem 6rem;overflow:hidden;background:#fff7e0;" aria-label="Pricing hero">
+
+    <!-- Ambient blobs -->
+    <div class="blob" id="drift-p1" style="width:500px;height:500px;background:rgba(28,26,20,0.04);top:-120px;right:-100px;" aria-hidden="true"></div>
+    <div class="blob" id="drift-p2" style="width:360px;height:360px;background:rgba(28,26,20,0.03);bottom:-80px;left:-60px;" aria-hidden="true"></div>
+
+    <div style="max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:1;">
+
+      <div class="anim-fade-up" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.35rem 1rem;border-radius:100px;background:rgba(28,26,20,0.07);margin-bottom:1.75rem;">
+        <div style="width:6px;height:6px;border-radius:50%;background:#1A1916;flex-shrink:0;"></div>
+        <span style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#5C5850;">Transparent Pricing</span>
+      </div>
+
+      <h1 class="anim-fade-up anim-delay-1" style="font-size:clamp(3rem,7vw,5.5rem);line-height:0.92;color:#1A1916;margin:0 0 1.5rem;">
+        Simple pricing.<br/>
+        <em style="font-style:italic;color:#8C8880;">No surprises.</em>
+      </h1>
+
+      <p class="anim-fade-up anim-delay-2" style="font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.75;color:#5C5850;max-width:520px;margin:0 auto 2.5rem;font-weight:400;">
+        Choose what fits your business today. You can always grow into the next tier — and there's never any lock-in.
+      </p>
+
+      <div class="anim-fade-up anim-delay-3" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.1rem;border-radius:100px;background:rgba(28,26,20,0.07);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5C5850" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span style="font-size:0.82rem;font-weight:600;color:#5C5850;">No payment until you approve the design</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       PRICING CARDS
+  ═══════════════════════════════════ -->
+  <section style="padding:0 1.5rem 5rem;background:#fff7e0;" aria-label="Pricing tiers">
+    <div style="max-width:1160px;margin:0 auto;">
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;align-items:start;">
+
+        <!-- STARTER -->
+        <div class="price-card reveal">
+          <div style="margin-bottom:1.75rem;">
+            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8C8880;margin:0 0 0.75rem;">Starter</p>
+            <div style="display:flex;align-items:baseline;gap:0.35rem;margin-bottom:0.4rem;">
+              <span style="font-size:3rem;font-weight:800;letter-spacing:-0.04em;color:#1A1916;line-height:1;">$500</span>
+              <span style="font-size:0.9rem;color:#8C8880;font-weight:500;">upfront</span>
+            </div>
+            <p style="font-size:0.82rem;color:#8C8880;margin:0 0 1.25rem;">no lock-in · no payment until approved</p>
+            <p style="font-size:0.95rem;line-height:1.6;color:#5C5850;margin:0;">Perfect for new businesses getting their first professional web presence.</p>
+          </div>
+
+          <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>Template website (5 pages)
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Domain setup + hosting
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Mobile responsive design
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Basic on-page SEO
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Contact form
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>1 revision round
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Free discovery call
+            </li>
+          </ul>
+
+          <a href="contact.html?plan=starter"
+            class="btn-dark ripple-btn shine-btn"
+            style="display:block;text-align:center;padding:0.95rem 1.5rem;border-radius:100px;font-size:0.95rem;font-weight:600;text-decoration:none;letter-spacing:0.01em;"
+            onmouseover="this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.transform=''"
+            onfocus="this.style.outline='2px solid rgba(28,26,20,0.5)';this.style.outlineOffset='3px'"
+            onblur="this.style.outline=''"
+          >Get Started</a>
+        </div>
+
+        <!-- GROWTH (FEATURED) -->
+        <div class="price-card featured reveal reveal-delay-1" style="position:relative;">
+          <!-- Popular badge -->
+          <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#1A1916;border:2px solid rgba(255,255,255,0.15);padding:0.3rem 1rem;border-radius:100px;">
+            <span style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">Most Popular</span>
+          </div>
+
+          <div style="margin-bottom:1.75rem;margin-top:0.5rem;">
+            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin:0 0 0.75rem;">Growth</p>
+            <div style="display:flex;align-items:baseline;gap:0.35rem;margin-bottom:0.4rem;">
+              <span style="font-size:3rem;font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1;">$1,000</span>
+              <span style="font-size:0.9rem;color:rgba(255,255,255,0.45);font-weight:500;">upfront</span>
+            </div>
+            <p style="font-size:0.82rem;color:rgba(255,255,255,0.35);margin:0 0 1.25rem;">no lock-in · no payment until approved</p>
+            <p style="font-size:0.95rem;line-height:1.6;color:rgba(255,255,255,0.65);margin:0;">For established businesses ready to compete online and convert traffic into customers.</p>
+          </div>
+
+          <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Custom design (up to 8 pages)
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Domain setup + hosting
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Mobile-first responsive design
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Full on-page SEO optimisation
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Booking calendar integration
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Contact form + lead capture
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Google Business Profile setup
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>2 revision rounds
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Free discovery call
+            </li>
+          </ul>
+
+          <a href="contact.html?plan=growth"
+            class="btn-glass-footer ripple-btn shine-btn"
+            style="display:block;text-align:center;padding:0.95rem 1.5rem;border-radius:100px;font-size:0.95rem;font-weight:600;text-decoration:none;letter-spacing:0.01em;"
+            onmouseover="this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.transform=''"
+            onfocus="this.style.outline='2px solid rgba(255,255,255,0.4)';this.style.outlineOffset='3px'"
+            onblur="this.style.outline=''"
+          >Get Started</a>
+        </div>
+
+        <!-- PRO -->
+        <div class="price-card reveal reveal-delay-2">
+          <div style="margin-bottom:1.75rem;">
+            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8C8880;margin:0 0 0.75rem;">Pro</p>
+            <div style="display:flex;align-items:baseline;gap:0.35rem;margin-bottom:0.4rem;">
+              <span style="font-size:3rem;font-weight:800;letter-spacing:-0.04em;color:#1A1916;line-height:1;">$1,500</span>
+              <span style="font-size:0.9rem;color:#8C8880;font-weight:500;">upfront</span>
+            </div>
+            <p style="font-size:0.82rem;color:#8C8880;margin:0 0 1.25rem;">no lock-in · no payment until approved</p>
+            <p style="font-size:0.95rem;line-height:1.6;color:#5C5850;margin:0;">The full package — strategy, design, SEO, and ongoing support all in one.</p>
+          </div>
+
+          <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Strategy + competitor consultation
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Fully custom design (unlimited pages)
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Domain setup + hosting
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Advanced SEO + speed optimisation
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Booking calendar + lead forms
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Google Business Profile setup
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Monthly performance report
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Unlimited revisions
+            </li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:#1A1916;">
+              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>Priority support line
+            </li>
+          </ul>
+
+          <a href="contact.html?plan=pro"
+            class="btn-dark ripple-btn shine-btn"
+            style="display:block;text-align:center;padding:0.95rem 1.5rem;border-radius:100px;font-size:0.95rem;font-weight:600;text-decoration:none;letter-spacing:0.01em;"
+            onmouseover="this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.transform=''"
+            onfocus="this.style.outline='2px solid rgba(28,26,20,0.5)';this.style.outlineOffset='3px'"
+            onblur="this.style.outline=''"
+          >Get Started</a>
+        </div>
+
+      </div>
+
+      <!-- Universal note -->
+      <p class="reveal" style="text-align:center;font-size:0.85rem;color:#8C8880;margin:2rem 0 0;line-height:1.65;">
+        All packages include a free discovery call. No payment until you approve the design.<br/>
+        Hosting is an additional <strong style="color:#5C5850;">$50/month</strong> for all plans.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       WHAT'S INCLUDED
+  ═══════════════════════════════════ -->
+  <section style="padding:5rem 1.5rem;background:#fffbef;" aria-label="What's included">
+    <div style="max-width:1160px;margin:0 auto;">
+
+      <div style="text-align:center;margin-bottom:3.5rem;">
+        <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem);color:#1A1916;margin:0 0 1rem;">
+          Every website we build includes
+        </h2>
+        <p class="reveal reveal-delay-1" style="font-size:1rem;color:#5C5850;line-height:1.7;max-width:480px;margin:0 auto;">
+          These aren't add-ons. They're the baseline — because anything less isn't worth building.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;">
+
+        <div class="service-card reveal">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(28,26,20,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 style="font-size:1rem;color:#1A1916;margin:0 0 0.6rem;">Fast Load Times</h3>
+          <p style="font-size:0.9rem;line-height:1.7;color:#5C5850;margin:0;">Optimised images, clean code, and performance-first architecture. Google rewards fast sites with better rankings.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(28,26,20,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <h3 style="font-size:1rem;color:#1A1916;margin:0 0 0.6rem;">Mobile-First Design</h3>
+          <p style="font-size:0.9rem;line-height:1.7;color:#5C5850;margin:0;">Over 70% of local business searches happen on phones. Your site will look and work perfectly on every screen size.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(28,26,20,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3 style="font-size:1rem;color:#1A1916;margin:0 0 0.6rem;">Built-In SEO</h3>
+          <p style="font-size:0.9rem;line-height:1.7;color:#5C5850;margin:0;">Proper title tags, meta descriptions, heading structure, schema markup, and sitemap — so Google can find and rank you from day one.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(28,26,20,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 style="font-size:1rem;color:#1A1916;margin:0 0 0.6rem;">SSL + Security</h3>
+          <p style="font-size:0.9rem;line-height:1.7;color:#5C5850;margin:0;">Every site includes an SSL certificate. Secure by default, with protection against common attacks.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(28,26,20,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <h3 style="font-size:1rem;color:#1A1916;margin:0 0 0.6rem;">Easy to Update</h3>
+          <p style="font-size:0.9rem;line-height:1.7;color:#5C5850;margin:0;">We build sites you can actually maintain. Need a change? Just message us directly — no complex CMS to learn.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(28,26,20,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1916" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3 style="font-size:1rem;color:#1A1916;margin:0 0 0.6rem;">Real Human Support</h3>
+          <p style="font-size:0.9rem;line-height:1.7;color:#5C5850;margin:0;">Direct line to the people who built your site — not a helpdesk ticket. You'll always know who you're dealing with and how to reach them.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       FAQ
+  ═══════════════════════════════════ -->
+  <section style="padding:5rem 1.5rem;background:#fff7e0;" aria-label="Frequently asked questions">
+    <div style="max-width:760px;margin:0 auto;">
+
+      <div style="text-align:center;margin-bottom:3rem;">
+        <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem);color:#1A1916;margin:0 0 0.75rem;">Common questions</h2>
+        <p class="reveal reveal-delay-1" style="font-size:1rem;color:#5C5850;line-height:1.7;margin:0;">Straight answers. No jargon.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+
+        <div class="faq-item reveal">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>What's included in the hosting fee?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#8C8880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            <p class="faq-body-inner">Hosting ($50/month) covers server space, bandwidth, daily backups, SSL renewal, uptime monitoring, and minor text/image updates on request. It keeps your site live, secure, and maintained without you needing to think about it.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-1">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>How long does it take to build my website?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#8C8880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            <p class="faq-body-inner">Most websites are delivered in 7–14 days from the discovery call. More complex Pro builds can take up to 3 weeks. We work fast and communicate clearly throughout the whole process.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-2">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>Do I own the website after it's built?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#8C8880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            <p class="faq-body-inner">Yes — completely. You own all the code, content, and assets. If you ever want to move hosting elsewhere, we'll hand everything over. No lock-in, ever.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-3">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>Can I upgrade my plan later?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#8C8880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            <p class="faq-body-inner">Absolutely. Many businesses start with Starter and upgrade to Growth once they see the results. We'll credit what you've already paid toward the upgrade — you only pay the difference.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-1">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>What if I'm not happy with the design?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#8C8880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            <p class="faq-body-inner">We don't take payment until you approve the design. Revision rounds are built into every plan. If you're genuinely unhappy and we can't fix it, you don't pay — simple as that.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       BOTTOM CTA (DARK)
+  ═══════════════════════════════════ -->
+  <footer style="position:relative;background:#0F0E0B;padding:6rem 1.5rem 3rem;overflow:hidden;" aria-label="Call to action and footer">
+
+    <div class="blob" style="width:600px;height:350px;background:rgba(255,255,255,0.03);top:0;left:50%;transform:translateX(-50%);" aria-hidden="true"></div>
+
+    <div style="max-width:800px;margin:0 auto;position:relative;z-index:1;">
+
+      <!-- CTA block -->
+      <div style="text-align:center;margin-bottom:4.5rem;">
+        <div class="reveal" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.35rem 1rem;border-radius:100px;background:rgba(255,255,255,0.08);margin-bottom:1.5rem;">
+          <div style="width:6px;height:6px;border-radius:50%;background:#fff;flex-shrink:0;box-shadow:0 0 8px rgba(255,255,255,0.5);"></div>
+          <span style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.65);">Not sure which plan?</span>
+        </div>
+        <h2 class="reveal reveal-delay-1" style="font-size:clamp(2.2rem,5vw,4rem);letter-spacing:-0.04em;color:#fff;margin:0 0 1.25rem;line-height:0.95;font-weight:800;">
+          Book a free<br/>
+          <em style="font-style:italic;color:rgba(255,255,255,0.45);">20-minute call.</em>
+        </h2>
+        <p class="reveal reveal-delay-2" style="font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto 2.5rem;">
+          We'll look at your business, tell you exactly what you need, and give you an honest recommendation — no sales pitch.
+        </p>
+        <div class="reveal reveal-delay-3">
+          <a href="contact.html"
+            class="btn-glass-footer ripple-btn shine-btn"
+            style="display:inline-flex;align-items:center;gap:0.6rem;padding:1rem 2.5rem;border-radius:100px;font-size:0.95rem;font-weight:600;letter-spacing:0.005em;text-decoration:none;"
+            onmouseover="this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.transform=''"
+            onfocus="this.style.outline='2px solid rgba(255,255,255,0.5)';this.style.outlineOffset='3px'"
+            onblur="this.style.outline=''"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.45 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Book a Free Call
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer bottom row -->
+      <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
+        <a href="index.html" aria-label="Flooma home" style="display:flex;align-items:center;opacity:0.55;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.55'">
+          <img src="brand_assets/floomaWhitePNG.png" alt="Flooma" style="height:60px;width:auto;object-fit:contain;filter:brightness(0) invert(1);" />
+        </a>
+        <p style="font-family:'Unispace',monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin:0;">© 2025 Flooma. All rights reserved.</p>
+        <div style="display:flex;align-items:center;gap:1.5rem;font-family:'Unispace',monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;">
+          <a href="index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Home</a>
+          <a href="pricing.html" style="color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Pricing</a>
+          <a href="contact.html" style="color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════ -->
+  <script>
+    // ── Nav scroll state ──
+    const navbar = document.getElementById('navbar');
+    function updateNav() {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // ── Scroll reveal ──
+    const revealObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: '0px 0px 60px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 800);
+
+    // ── Button click ripple ──
+    document.querySelectorAll('.ripple-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const r    = btn.getBoundingClientRect();
+        const size = Math.max(r.width, r.height);
+        const x    = e.clientX - r.left - size / 2;
+        const y    = e.clientY - r.top  - size / 2;
+        const wave = document.createElement('span');
+        wave.className = 'ripple-wave';
+        wave.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
+        btn.appendChild(wave);
+        wave.addEventListener('animationend', () => wave.remove());
+      });
+    });
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // ── Drifting blobs ──
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced) {
+      function driftBlob(el, speedX, speedY, phaseX, phaseY, rangeX, rangeY) {
+        let t = 0;
+        (function tick() {
+          t += 0.004;
+          el.style.transform = `translate(${Math.sin(t * speedX + phaseX) * rangeX}px, ${Math.cos(t * speedY + phaseY) * rangeY}px)`;
+          requestAnimationFrame(tick);
+        })();
+      }
+      const dp1 = document.getElementById('drift-p1');
+      const dp2 = document.getElementById('drift-p2');
+      if (dp1) driftBlob(dp1, 1.0, 0.9, 1.5, 0.4, 38, 28);
+      if (dp2) driftBlob(dp2, 0.8, 1.3, 0.9, 2.0, 32, 40);
+    }
+  </script>
+
+</body>
+</html>
