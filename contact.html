@@ -70,6 +70,7 @@
   </script>
 
   <style>
+    ::selection { background: #fff5d9; color: #1c1c15; }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
@@ -480,6 +481,7 @@
         Tell us what you're working with. We'll give you a straight answer on what you need — and what you probably don't.
       </p>
     </div>
+    <img src="brand_assets/floomaflowerBlackPNG.png" class="flooma-flower" style="position:absolute;bottom:-50px;left:-30px;width:240px;height:240px;opacity:0.05;transition:opacity 1.4s ease;pointer-events:none;transform:rotate(-15deg);" aria-hidden="true"/>
   </section>
 
 
@@ -747,6 +749,12 @@
     }
     window.addEventListener('scroll', updateNav, { passive: true });
     updateNav();
+
+    // ── Flower logo scroll reveal ──
+    const flowerObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { e.target.style.opacity = e.isIntersecting ? '0.18' : '0.05'; });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.flooma-flower').forEach(el => flowerObs.observe(el));
 
     // ── Scroll reveal ──
     const revealObs = new IntersectionObserver(

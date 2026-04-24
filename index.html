@@ -17,6 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Unispace&display=swap" rel="stylesheet">
 <style>
+  ::selection { background: #fff5d9; color: #1c1c15; }
   .vertical-text {
     writing-mode: vertical-rl;
     text-orientation: mixed;
@@ -66,9 +67,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1.25rem;
+    padding: 0.85rem 2.25rem;
     font-family: 'Unispace', monospace;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.9);
@@ -208,7 +209,7 @@
   }
 </script>
 </head>
-<body class="bg-background text-on-background font-body-main antialiased selection:bg-primary selection:text-on-primary">
+<body class="bg-background text-on-background font-body-main antialiased">
 
 <!-- Nav -->
 <nav id="navbar">
@@ -234,8 +235,8 @@
     aria-hidden="true"
     class="absolute inset-0 w-full h-full object-cover z-0"
   ></video>
-  <div class="relative z-[2] pt-[10vh] pl-14">
-    <h1 class="font-display-xl text-display-xl text-white font-black">
+  <div class="relative z-[2] pt-[10vh] pl-[7vw]">
+    <h1 class="font-display-xl text-display-xl text-white font-black" style="font-size:clamp(60px,7.5vw,90px);line-height:0.92;letter-spacing:-0.04em;">
       WE BUILD WEBSITES<br/>THAT CONVERT.
     </h1>
     <div class="mt-8">
@@ -249,17 +250,18 @@
 <main class="max-w-container-max mx-auto">
 
   <!-- Intro Text -->
-  <section class="px-margin py-8 md:py-12">
+  <section class="px-margin pt-20 md:pt-24 pb-12 md:pb-16 relative overflow-hidden">
     <div class="max-w-[720px]">
       <p id="intro-text" class="font-medium" style="font-size:clamp(28px,3.2vw,44px);line-height:1.38;letter-spacing:-0.03em;color:#1c1c15;font-weight:600;">We build websites that actually work — fast, focused, and built around getting you more customers. We handle everything from design to launch.</p>
     </div>
+    <img src="brand_assets/floomaflowerBlackPNG.png" id="intro-flower" class="flooma-flower absolute right-16 top-1/2 -translate-y-1/2 w-44 h-44 pointer-events-none hidden md:block" style="opacity:0.07;transition:opacity 1.4s ease;" aria-hidden="true"/>
   </section>
 
   <!-- Services -->
   <section id="services" class="px-margin py-24 relative overflow-hidden">
-    <h2 class="font-label-caps text-label-caps uppercase font-thin absolute top-6 left-16 z-10 hidden md:block" style="color:#1c1c15;opacity:0.45;">Services</h2>
+    <h2 class="font-label-caps text-label-caps uppercase font-thin absolute left-16 z-10 hidden md:block" style="color:#1c1c15;opacity:0.45;top:calc(6rem - 28px);">Services</h2>
     <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-stretch">
-      <div class="md:col-span-4 relative hidden md:block -my-24">
+      <div class="md:col-span-4 relative hidden md:block">
         <div class="absolute inset-0 overflow-hidden">
           <img alt="Services" class="w-full h-full object-cover object-center" src="brand_assets/computer falling.png" loading="lazy"/>
         </div>
@@ -356,7 +358,7 @@
   </section>
 
   <!-- Engagement Models -->
-  <section class="max-w-container-max mx-auto px-margin mb-32 relative pt-24 border-t border-secondary-container">
+  <section class="max-w-container-max mx-auto px-margin mb-12 relative pt-24 border-t border-secondary-container">
     <h2 class="font-headline-lg text-headline-lg mb-16 font-black text-center">Engagement Models</h2>
     <div class="flex flex-col border-y border-primary divide-y divide-primary">
 
@@ -456,11 +458,15 @@
       wordSpans.forEach((s, i) => {
         s.style.opacity = p >= i / wordSpans.length ? '1' : '0.12';
       });
+      if (introFlower) introFlower.style.opacity = (0.07 + p * 0.21).toFixed(3);
     }
     window.addEventListener('scroll', updateWords, { passive: true });
     window.addEventListener('resize', updateWords);
     updateWords();
   }
+
+  // Flower opacity synced with word reveal scroll progress
+  const introFlower = document.getElementById('intro-flower');
 
   // Fade-up entrance for sections
   const fadeObs = new IntersectionObserver((entries) => {
