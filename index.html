@@ -441,6 +441,9 @@
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 
+  // Flower opacity synced with word reveal scroll progress
+  const introFlower = document.getElementById('intro-flower');
+
   // Word-by-word scroll reveal (MagicText pattern)
   const introEl = document.getElementById('intro-text');
   if (introEl) {
@@ -464,9 +467,6 @@
     window.addEventListener('resize', updateWords);
     updateWords();
   }
-
-  // Flower opacity synced with word reveal scroll progress
-  const introFlower = document.getElementById('intro-flower');
 
   // Fade-up entrance for sections
   const fadeObs = new IntersectionObserver((entries) => {
