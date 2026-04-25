@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Unispace&display=swap" rel="stylesheet">
 <style>
-  ::selection { background: #fff5d9; color: #1c1c15; }
+  ::selection { background: #f5edd5; color: #1c1c15; }
   .vertical-text {
     writing-mode: vertical-rl;
     text-orientation: mixed;
@@ -32,14 +32,12 @@
     background: transparent;
   }
   #navbar.scrolled {
-    background: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(12px) saturate(160%);
-    -webkit-backdrop-filter: blur(12px) saturate(160%);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
   }
   .nav-link-main {
     font-family: 'Unispace', monospace;
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.7);
@@ -49,19 +47,19 @@
   .nav-link-main:hover { color: #ffffff; }
   .nav-cta-main {
     font-family: 'Unispace', monospace;
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255,255,255,0.95);
     text-decoration: none;
-    padding: 0.5rem 1.25rem;
-    border: 1px solid rgba(255,255,255,0.55);
+    padding: 0.55rem 1.4rem;
+    border: 1px solid rgba(255,255,255,0.7);
     transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
   .nav-cta-main:hover {
     color: #fff;
-    border-color: rgba(255,255,255,0.8);
-    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.1);
   }
   .hero-cta-btn {
     display: inline-flex;
@@ -74,8 +72,8 @@
     text-transform: uppercase;
     color: rgba(255,255,255,0.9);
     text-decoration: none;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.55);
+    background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(255,255,255,0.7);
     position: relative;
     overflow: hidden;
     transition: background 0.2s ease, border-color 0.2s ease,
@@ -109,6 +107,27 @@
   .fade-up.delay-2 { transition-delay: 0.16s; }
   .fade-up.delay-3 { transition-delay: 0.24s; }
   .fade-up.delay-4 { transition-delay: 0.32s; }
+  @keyframes flower-spin {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to   { transform: translateY(-50%) rotate(360deg); }
+  }
+  #intro-flower {
+    animation: flower-spin 28s linear infinite;
+  }
+  /* Mobile menu */
+  #mobile-menu a {
+    font-family: 'Unispace', monospace;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  @media (max-width: 767px) {
+    .px-margin { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+    .hero-section-inner { padding-left: 1.5rem !important; padding-top: 0 !important; }
+    .hero-section-inner { padding-top: 22vh !important; }
+    .hero-video { object-position: 55% 78% !important; }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -127,7 +146,7 @@
     theme: {
       extend: {
         colors: {
-          "surface": "#fff2c9",
+          "surface": "#f5edd5",
           "on-error": "#ffffff",
           "tertiary-container": "#1c1b1a",
           "background": "#fff7e0",
@@ -135,12 +154,12 @@
           "tertiary-fixed-dim": "#cac6c4",
           "on-background": "#1c1c15",
           "inverse-primary": "#c8c6c5",
-          "surface-container-low": "#fff2c9",
+          "surface-container-low": "#f5edd5",
           "on-secondary-fixed-variant": "#484740",
           "on-secondary-fixed": "#1c1c16",
           "on-primary-fixed-variant": "#474746",
           "surface-tint": "#5f5e5e",
-          "surface-container-lowest": "#fff7e0",
+          "surface-container-lowest": "#f5edd5",
           "primary-fixed": "#e5e2e1",
           "surface-container-highest": "#e6e3d7",
           "on-tertiary-fixed-variant": "#484645",
@@ -153,7 +172,7 @@
           "tertiary": "#000000",
           "on-surface-variant": "#444748",
           "outline-variant": "#c4c7c7",
-          "surface-bright": "#fff2c9",
+          "surface-bright": "#f5edd5",
           "on-surface": "#1c1c15",
           "secondary": "#605e57",
           "primary-fixed-dim": "#c8c6c5",
@@ -174,7 +193,7 @@
           "on-secondary-container": "#64635b",
           "outline": "#747878",
           "surface-container": "#f1eee2",
-          "custom-cream": "#fff2c9"
+          "custom-cream": "#f5edd5"
         },
         borderRadius: {
           DEFAULT: "0.25rem",
@@ -213,9 +232,9 @@
 
 <!-- Nav -->
 <nav id="navbar">
-  <div class="max-w-[1440px] mx-auto px-16 flex justify-between items-center h-20">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-16 flex justify-between items-center h-[90px]">
     <a class="flex items-center" href="#">
-      <img alt="Flooma logo" style="height:80px;width:auto;object-fit:contain;" src="brand_assets/floomaWhitePNG.png"/>
+      <img alt="Flooma logo" style="height:90px;width:auto;object-fit:contain;" src="brand_assets/floomaWhitePNG.png"/>
     </a>
     <div class="hidden md:flex items-center gap-8">
       <a class="nav-link-main" href="#services">Services</a>
@@ -223,25 +242,44 @@
       <a class="nav-link-main" href="contact.html">Contact</a>
     </div>
     <a class="nav-cta-main hidden md:block" href="contact.html">Get in Touch</a>
+    <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 bg-transparent border-0 cursor-pointer" aria-label="Open menu" aria-expanded="false">
+      <span class="menu-bar block w-5 h-px bg-white" style="transition:transform 0.3s ease,opacity 0.3s ease;"></span>
+      <span class="menu-bar block w-5 h-px bg-white" style="transition:transform 0.3s ease,opacity 0.3s ease;"></span>
+      <span class="menu-bar block w-5 h-px bg-white" style="transition:transform 0.3s ease,opacity 0.3s ease;"></span>
+    </button>
+  </div>
+  <div id="mobile-menu" style="display:none;background:rgba(0,0,0,0.97);border-top:1px solid rgba(255,255,255,0.08);">
+    <div class="flex flex-col px-6 py-6 gap-6">
+      <a style="color:rgba(255,255,255,0.7);" href="#services" onclick="closeMobileMenu()">Services</a>
+      <a style="color:rgba(255,255,255,0.7);" href="pricing.html">Pricing</a>
+      <a style="color:rgba(255,255,255,0.7);" href="contact.html">Contact</a>
+      <a class="nav-cta-main self-start mt-2" href="contact.html" style="display:inline-block;">Get in Touch</a>
+    </div>
   </div>
 </nav>
 
 <!-- Hero (full-screen, outside main container) -->
-<section class="h-screen relative overflow-hidden flex flex-col justify-start px-margin">
+<section class="h-screen relative overflow-hidden flex flex-col px-margin">
   <video
     src="brand_assets/Hero Animation.mp4"
     autoplay muted loop playsinline
     preload="auto"
     aria-hidden="true"
-    class="absolute inset-0 w-full h-full object-cover z-0"
+    class="hero-video absolute inset-0 w-full h-full object-cover z-0"
+    style="object-position:35% center;"
   ></video>
-  <div class="relative z-[2] pt-[10vh] pl-[7vw]">
-    <h1 class="font-display-xl text-display-xl text-white font-black" style="font-size:clamp(60px,7.5vw,90px);line-height:0.92;letter-spacing:-0.04em;">
+  <div class="relative z-[2] pt-[10vh] hero-section-inner" style="padding-left:7vw;">
+    <h1 class="font-display-xl text-display-xl text-white font-black" style="font-size:clamp(38px,7.5vw,90px);line-height:0.92;letter-spacing:-0.04em;">
       WE BUILD WEBSITES<br/>THAT CONVERT.
     </h1>
-    <div class="mt-8">
+    <!-- Desktop button sits inline with text -->
+    <div style="margin-top:15px;" class="hidden md:block">
       <a href="contact.html" class="hero-cta-btn">Let's talk &rarr;</a>
     </div>
+  </div>
+  <!-- Mobile-only: button anchored to bottom with same padding as text has at top -->
+  <div class="md:hidden relative z-[2] mt-auto" style="padding-left:1.5rem;padding-bottom:22vh;">
+    <a href="contact.html" class="hero-cta-btn">Let's talk &rarr;</a>
   </div>
   <div class="absolute left-8 top-1/2 -translate-y-1/2 vertical-text font-label-caps text-label-caps text-white/40 tracking-[0.2em] uppercase font-thin hidden md:block z-[2]">01 / Introduction</div>
 </section>
@@ -250,18 +288,18 @@
 <main class="max-w-container-max mx-auto">
 
   <!-- Intro Text -->
-  <section class="px-margin pt-20 md:pt-24 pb-12 md:pb-16 relative overflow-hidden">
+  <section class="px-margin pt-20 md:pt-24 pb-10 md:pb-14 relative overflow-hidden">
     <div class="max-w-[720px]">
       <p id="intro-text" class="font-medium" style="font-size:clamp(28px,3.2vw,44px);line-height:1.38;letter-spacing:-0.03em;color:#1c1c15;font-weight:600;">We build websites that actually work — fast, focused, and built around getting you more customers. We handle everything from design to launch.</p>
     </div>
-    <img src="brand_assets/floomaflowerBlackPNG.png" id="intro-flower" class="flooma-flower absolute right-16 top-1/2 -translate-y-1/2 w-44 h-44 pointer-events-none hidden md:block" style="opacity:0.07;transition:opacity 1.4s ease;" aria-hidden="true"/>
+    <img src="brand_assets/floomaflowerBlackPNG.png" id="intro-flower" class="flooma-flower absolute right-16 top-1/2 -translate-y-1/2 w-56 h-56 pointer-events-none hidden md:block" style="opacity:0.07;transition:opacity 1.4s ease;" aria-hidden="true"/>
   </section>
 
   <!-- Services -->
   <section id="services" class="px-margin py-24 relative overflow-hidden">
     <h2 class="font-label-caps text-label-caps uppercase font-thin absolute left-16 z-10 hidden md:block" style="color:#1c1c15;opacity:0.45;top:calc(6rem - 28px);">Services</h2>
     <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-stretch">
-      <div class="md:col-span-4 relative hidden md:block">
+      <div class="md:col-span-4 relative" style="min-height:220px;">
         <div class="absolute inset-0 overflow-hidden">
           <img alt="Services" class="w-full h-full object-cover object-center" src="brand_assets/computer falling.png" loading="lazy"/>
         </div>
@@ -359,10 +397,10 @@
 
   <!-- Engagement Models -->
   <section class="max-w-container-max mx-auto px-margin mb-12 relative pt-24 border-t border-secondary-container">
-    <h2 class="font-headline-lg text-headline-lg mb-16 font-black text-center">Engagement Models</h2>
+    <h2 class="font-headline-lg text-headline-lg mb-20 font-black text-center">Engagement Models</h2>
     <div class="flex flex-col border-y border-primary divide-y divide-primary">
 
-      <div class="flex flex-col md:flex-row items-baseline justify-between py-12 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer">
+      <div class="flex flex-col md:flex-row items-baseline justify-between py-16 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer">
         <div class="flex-1">
           <h3 class="font-headline-md text-headline-md font-black mb-2 group-hover:pl-4 transition-all duration-300">Foundation</h3>
           <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Single-page landing site with brand identity — typography, colour palette, and a design built to convert.</p>
@@ -374,7 +412,7 @@
         </div>
       </div>
 
-      <div class="flex flex-col md:flex-row items-baseline justify-between py-12 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer relative">
+      <div class="flex flex-col md:flex-row items-baseline justify-between py-16 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer relative">
         <div class="absolute top-4 right-4 bg-primary text-on-primary font-label-caps text-label-caps uppercase px-4 py-1 text-[10px] hidden md:block">Popular</div>
         <div class="flex-1">
           <h3 class="font-headline-md text-headline-md font-black mb-2 group-hover:pl-4 transition-all duration-300">Architecture</h3>
@@ -387,7 +425,7 @@
         </div>
       </div>
 
-      <div class="flex flex-col md:flex-row items-baseline justify-between py-12 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer">
+      <div class="flex flex-col md:flex-row items-baseline justify-between py-16 gap-8 hover:bg-surface-container-low transition-colors px-4 -mx-4 group cursor-pointer">
         <div class="flex-1">
           <h3 class="font-headline-md text-headline-md font-black mb-2 group-hover:pl-4 transition-all duration-300">Ecosystem</h3>
           <p class="font-body-sm text-body-sm text-on-surface-variant font-normal max-w-sm group-hover:pl-4 transition-all duration-300 delay-75">Complete multi-page website with full brand identity, advanced interactions, and priority ongoing support.</p>
@@ -421,13 +459,17 @@
       <a href="#" style="display:flex;align-items:center;opacity:0.6;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
         <img alt="Flooma logo" style="height:80px;width:auto;object-fit:contain;" src="brand_assets/floomaWhitePNG.png"/>
       </a>
-      <div class="flex flex-wrap justify-center gap-8" style="font-family:'Unispace',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">
+      <div style="display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:1.5rem;font-family:'Unispace',monospace;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;">
         <a style="color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s ease;" href="#" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Privacy Policy</a>
         <a style="color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s ease;" href="#" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Terms of Service</a>
-        <a style="color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s ease;" href="#" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Instagram</a>
-        <a style="color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s ease;" href="#" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">LinkedIn</a>
+        <div style="display:flex;align-items:center;gap:1rem;margin-left:0.25rem;">
+          <a href="#" aria-label="Instagram" style="color:rgba(255,255,255,0.45);display:flex;align-items:center;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Facebook" style="color:rgba(255,255,255,0.45);display:flex;align-items:center;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Twitter / X" style="color:rgba(255,255,255,0.45);display:flex;align-items:center;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg></a>
+          <a href="#" aria-label="LinkedIn" style="color:rgba(255,255,255,0.45);display:flex;align-items:center;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
       </div>
-      <div style="font-family:'Unispace',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.28);">
+      <div style="font-family:'Unispace',monospace;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.28);">
         &copy; 2025 Flooma Agency. All rights reserved.
       </div>
     </div>
@@ -440,6 +482,33 @@
   function updateNav() { navbar.classList.toggle('scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.style.display !== 'none';
+    mobileMenu.style.display = isOpen ? 'none' : 'block';
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    const bars = menuBtn.querySelectorAll('.menu-bar');
+    if (!isOpen) {
+      bars[0].style.transform = 'translateY(6px) rotate(45deg)';
+      bars[1].style.opacity = '0';
+      bars[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+    } else {
+      bars[0].style.transform = '';
+      bars[1].style.opacity = '';
+      bars[2].style.transform = '';
+    }
+  });
+  function closeMobileMenu() {
+    mobileMenu.style.display = 'none';
+    menuBtn.setAttribute('aria-expanded', 'false');
+    const bars = menuBtn.querySelectorAll('.menu-bar');
+    bars[0].style.transform = '';
+    bars[1].style.opacity = '';
+    bars[2].style.transform = '';
+  }
 
   // Flower opacity synced with word reveal scroll progress
   const introFlower = document.getElementById('intro-flower');
@@ -461,7 +530,7 @@
       wordSpans.forEach((s, i) => {
         s.style.opacity = p >= i / wordSpans.length ? '1' : '0.12';
       });
-      if (introFlower) introFlower.style.opacity = (0.07 + p * 0.21).toFixed(3);
+      if (introFlower) introFlower.style.opacity = (0.07 + p * 0.93).toFixed(3);
     }
     window.addEventListener('scroll', updateWords, { passive: true });
     window.addEventListener('resize', updateWords);
