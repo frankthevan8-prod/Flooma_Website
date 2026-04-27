@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Unispace&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="brand_assets/floomaflowerBlackPNG.png">
 <style>
   ::selection { background: #2563eb; color: #ffffff; }
   .vertical-text {
@@ -121,9 +122,16 @@
   }
   @media (max-width: 767px) {
     .px-margin { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
-    .hero-section-inner { padding-left: 1.5rem !important; padding-top: 0 !important; }
-    .hero-section-inner { padding-top: 22vh !important; }
+    .hero-section-inner { padding-left: 1.5rem !important; padding-top: 13vh !important; }
     .hero-video { object-position: 55% 78% !important; }
+    .hero-cta-btn {
+      background: linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.28) 100%);
+      padding: 0.7rem 1.75rem;
+    }
+    .font-headline-lg {
+      font-size: 34px !important;
+      line-height: 40px !important;
+    }
   }
 </style>
 <script type="application/ld+json">
@@ -151,7 +159,7 @@
           "tertiary-fixed-dim": "#cac6c4",
           "on-background": "#1c1c15",
           "inverse-primary": "#c8c6c5",
-          "surface-container-low": "#f5edd5",
+          "surface-container-low": "#fcf2d2",
           "on-secondary-fixed-variant": "#484740",
           "on-secondary-fixed": "#1c1c16",
           "on-primary-fixed-variant": "#474746",
@@ -275,7 +283,7 @@
     </div>
   </div>
   <!-- Mobile-only: button anchored to bottom with same padding as text has at top -->
-  <div class="md:hidden relative z-[2] mt-auto" style="padding-left:1.5rem;padding-bottom:22vh;">
+  <div class="md:hidden relative z-[2] mt-auto" style="padding-left:1.5rem;padding-bottom:14vh;">
     <a href="contact.html" class="hero-cta-btn">Let's talk &rarr;</a>
   </div>
   <div class="absolute left-8 top-1/2 -translate-y-1/2 vertical-text font-label-caps text-label-caps text-white/40 tracking-[0.2em] uppercase font-thin hidden md:block z-[2]">01 / Introduction</div>
@@ -285,21 +293,28 @@
 <main class="max-w-container-max mx-auto">
 
   <!-- Intro Text -->
-  <section class="px-margin pt-20 md:pt-24 pb-10 md:pb-14 relative overflow-hidden">
+  <section class="px-margin pt-8 md:pt-24 pb-0 md:pb-14 relative overflow-hidden">
     <div class="max-w-[720px]">
       <p id="intro-text" class="font-medium" style="font-size:clamp(28px,3.2vw,44px);line-height:1.38;letter-spacing:-0.03em;color:#1c1c15;font-weight:600;">We build websites that actually work - fast, focused, and built around getting you more customers. We handle everything from design to launch.</p>
     </div>
-    <img src="brand_assets/floomaflowerBlackPNG.png" id="intro-flower" class="flooma-flower absolute right-16 top-1/2 -translate-y-1/2 w-56 h-56 pointer-events-none hidden md:block" style="opacity:0.07;transition:opacity 1.4s ease;" aria-hidden="true"/>
+    <img src="brand_assets/floomaflowerBlackPNG.png" id="intro-flower" class="flooma-flower absolute right-16 top-1/2 -translate-y-1/2 w-56 h-56 pointer-events-none hidden xl:block" style="opacity:0.07;transition:opacity 1.4s ease;" aria-hidden="true"/>
   </section>
 
   <!-- Services -->
-  <section id="services" class="px-margin py-24 relative overflow-hidden">
+  <section id="services" class="px-margin pt-6 pb-24 md:py-24 relative overflow-hidden">
     <h2 class="font-label-caps text-label-caps uppercase font-thin absolute left-16 z-10 hidden md:block" style="color:#1c1c15;opacity:0.45;top:calc(6rem - 28px);">Services</h2>
     <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-stretch">
-      <div class="md:col-span-4 relative" style="min-height:220px;">
+      <!-- Desktop: original absolute fill -->
+      <div class="hidden md:block md:col-span-4 relative" style="min-height:220px;">
         <div class="absolute inset-0 overflow-hidden">
           <img alt="Services" class="w-full h-full object-cover object-center" src="brand_assets/computer falling.png" loading="lazy"/>
         </div>
+      </div>
+      <!-- Mobile services label -->
+      <p class="md:hidden font-label-caps text-label-caps uppercase font-thin mb-0" style="color:#1c1c15;opacity:0.45;">Services</p>
+      <!-- Mobile: natural image with slight crop -->
+      <div class="block md:hidden overflow-hidden">
+        <img alt="Services" style="width:100%;height:auto;display:block;margin-top:-30px;margin-bottom:-20px;" src="brand_assets/computer falling.png" loading="lazy"/>
       </div>
       <div class="md:col-span-8 self-stretch">
         <div class="flex flex-col border-t border-inverse-primary">
@@ -541,6 +556,13 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+
+  // Force video autoplay on mobile
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.play().catch(() => {});
+    document.addEventListener('touchstart', () => { heroVideo.play().catch(() => {}); }, { once: true });
+  }
 </script>
 
 </body>
