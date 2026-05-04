@@ -524,8 +524,9 @@
               <form id="contact-form" novalidate>
 
                 <div class="form-field">
-                  <label class="form-label" for="name">Your Name</label>
+                  <label class="form-label" for="name">Your Name <span style="color:#c0392b;">*</span></label>
                   <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" required autocomplete="name" />
+                  <p class="field-error" id="name-error" style="display:none;margin:0.4rem 0 0;font-size:0.8rem;color:#c0392b;">Please enter your name.</p>
                 </div>
 
                 <div class="form-field">
@@ -534,8 +535,9 @@
                 </div>
 
                 <div class="form-field">
-                  <label class="form-label" for="email">Email Address</label>
+                  <label class="form-label" for="email">Email Address <span style="color:#c0392b;">*</span></label>
                   <input class="form-input" type="email" id="email" name="email" placeholder="jane@smithco.com" required autocomplete="email" />
+                  <p class="field-error" id="email-error" style="display:none;margin:0.4rem 0 0;font-size:0.8rem;color:#c0392b;">Please enter a valid email address (e.g. jane@smithco.com).</p>
                 </div>
 
                 <div class="form-field">
@@ -551,8 +553,9 @@
                 </div>
 
                 <div class="form-field" style="margin-bottom:2rem;">
-                  <label class="form-label" for="message">Tell us about your business</label>
+                  <label class="form-label" for="message">Tell us about your business <span style="color:#c0392b;">*</span></label>
                   <textarea class="form-textarea" id="message" name="message" placeholder="What do you do, who are your customers, and what's your goal with a new website?" required></textarea>
+                  <p class="field-error" id="message-error" style="display:none;margin:0.4rem 0 0;font-size:0.8rem;color:#c0392b;">Please tell us a bit about your business.</p>
                 </div>
 
                 <button type="submit"
@@ -861,19 +864,88 @@
       }
     })();
 
-    // ── Form submission (demo — shows success state) ──
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    // ── Live field clearing ──
+    const emailRegexLive = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    document.getElementById('name').addEventListener('input', function() {
+      if (this.value.trim()) { document.getElementById('name-error').style.display='none'; this.style.borderColor=''; }
+    });
+    document.getElementById('email').addEventListener('input', function() {
+      if (emailRegexLive.test(this.value.trim())) { document.getElementById('email-error').style.display='none'; this.style.borderColor=''; }
+    });
+    document.getElementById('message').addEventListener('input', function() {
+      if (this.value.trim()) { document.getElementById('message-error').style.display='none'; this.style.borderColor=''; }
+    });
+
+    // ── Form submission ──
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
+
+      const nameEl    = document.getElementById('name');
+      const emailEl   = document.getElementById('email');
+      const messageEl = document.getElementById('message');
+
+      const nameErr    = document.getElementById('name-error');
+      const emailErr   = document.getElementById('email-error');
+      const messageErr = document.getElementById('message-error');
+
+      // Validate
+      let valid = true;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!nameEl.value.trim()) {
+        nameErr.style.display = 'block';
+        nameEl.style.borderColor = '#c0392b';
+        valid = false;
+      } else {
+        nameErr.style.display = 'none';
+        nameEl.style.borderColor = '';
+      }
+
+      if (!emailEl.value.trim() || !emailRegex.test(emailEl.value.trim())) {
+        emailErr.style.display = 'block';
+        emailEl.style.borderColor = '#c0392b';
+        valid = false;
+      } else {
+        emailErr.style.display = 'none';
+        emailEl.style.borderColor = '';
+      }
+
+      if (!messageEl.value.trim()) {
+        messageErr.style.display = 'block';
+        messageEl.style.borderColor = '#c0392b';
+        valid = false;
+      } else {
+        messageErr.style.display = 'none';
+        messageEl.style.borderColor = '';
+      }
+
+      if (!valid) return;
+
       const btn = this.querySelector('button[type="submit"]');
       const submitText = document.getElementById('submit-text');
       btn.disabled = true;
       submitText.textContent = 'Sending…';
-      // Simulate async
-      setTimeout(() => {
-        document.getElementById('form-content').classList.add('hidden');
-        const success = document.getElementById('form-success');
-        success.classList.add('visible');
-      }, 800);
+
+      try {
+        const response = await fetch('https://formspree.io/f/mqenpwbe', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(this)
+        });
+
+        if (response.ok) {
+          document.getElementById('form-content').classList.add('hidden');
+          document.getElementById('form-success').classList.add('visible');
+        } else {
+          submitText.textContent = 'Send Message';
+          btn.disabled = false;
+          alert('Something went wrong. Please try again or email us at support@floomadigital.com');
+        }
+      } catch {
+        submitText.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or email us at support@floomadigital.com');
+      }
     });
 
     // ── Drifting blobs ──
