@@ -264,10 +264,11 @@
 </nav>
 
 <!-- Hero (full-screen, outside main container) -->
-<section class="h-screen relative overflow-hidden flex flex-col px-margin">
+<section class="h-screen relative overflow-hidden flex flex-col px-margin" style="background-color:#000;">
   <video
     src="brand_assets/Hero Animation.mp4"
-    autoplay muted loop playsinline
+    poster="brand_assets/hero-poster.jpg"
+    autoplay muted loop playsinline webkit-playsinline
     preload="auto"
     aria-hidden="true"
     class="hero-video absolute inset-0 w-full h-full object-cover z-0"
@@ -312,9 +313,9 @@
       </div>
       <!-- Mobile services label -->
       <p class="md:hidden font-label-caps text-label-caps uppercase font-thin mb-0" style="color:#1c1c15;opacity:0.45;">Services</p>
-      <!-- Mobile: natural image with slight crop -->
-      <div class="block md:hidden overflow-hidden">
-        <img alt="Services" style="width:100%;height:auto;display:block;margin-top:-30px;margin-bottom:-20px;" src="brand_assets/computer falling.png" loading="lazy"/>
+      <!-- Mobile: natural image -->
+      <div class="block md:hidden" style="max-height:420px;overflow:hidden;">
+        <img alt="Services" style="width:100%;height:auto;display:block;" src="brand_assets/computer falling.png" loading="eager"/>
       </div>
       <div class="md:col-span-8 self-stretch">
         <div class="flex flex-col border-t border-inverse-primary">
@@ -561,7 +562,10 @@
   const heroVideo = document.querySelector('.hero-video');
   if (heroVideo) {
     heroVideo.play().catch(() => {});
-    document.addEventListener('touchstart', () => { heroVideo.play().catch(() => {}); }, { once: true });
+    const tryPlay = () => { heroVideo.load(); heroVideo.play().catch(() => {}); };
+    document.addEventListener('touchstart', tryPlay, { once: true });
+    document.addEventListener('click', tryPlay, { once: true });
+    heroVideo.addEventListener('touchstart', tryPlay, { once: true });
   }
 </script>
 
