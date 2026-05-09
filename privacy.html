@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Flooma Web Design Agency Australia</title>
+  <meta name="description" content="Flooma Digital's privacy policy. How we collect, use, and protect your information as a web design agency serving small businesses across Australia." />
+  <meta property="og:title" content="Privacy Policy | Flooma Web Design Agency Australia"/>
+  <meta property="og:description" content="How Flooma Digital collects, uses, and protects your personal information."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://flooma.agency/privacy"/>
+  <meta property="og:image" content="https://flooma.agency/brand_assets/hero-poster.jpg"/>
+  <link rel="canonical" href="https://flooma.agency/privacy"/>
+  <link rel="icon" type="image/png" href="brand_assets/floomaflowerBlackPNG.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unispace&display=swap" rel="stylesheet">
+
+  <style>
+    ::selection { background: #2563eb; color: #ffffff; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    h1 { font-family: 'Inter', Arial, sans-serif !important; font-weight: 900 !important; letter-spacing: -0.05em !important; }
+    h2 { font-family: 'Inter', Arial, sans-serif !important; font-weight: 800 !important; letter-spacing: -0.03em !important; }
+    body {
+      font-family: 'Inter', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+      font-weight: 400;
+      background-color: #fff7e0;
+      color: #1A1916;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Nav ─── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      transition: box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
+      background: rgba(0,0,0,1);
+    }
+    #navbar.scrolled {
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .nav-link {
+      font-family: 'Unispace', monospace;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: #ffffff; }
+    .nav-link.active { color: #ffffff; }
+    .nav-cta-main {
+      font-family: 'Unispace', monospace;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.95);
+      text-decoration: none;
+      padding: 0.55rem 1.4rem;
+      border: 1px solid rgba(255,255,255,0.7);
+      background: linear-gradient(135deg, rgba(0,0,0,0.16) 0%, rgba(0,0,0,0.06) 100%);
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .nav-cta-main:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.9);
+      background: linear-gradient(135deg, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0.10) 100%);
+    }
+    @media (max-width: 767px) {
+      .desktop-nav { display: none !important; }
+    }
+
+    /* ─── Animations ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.34,1.1,0.64,1),
+                  transform 0.7s cubic-bezier(0.34,1.1,0.64,1),
+                  filter 0.7s ease;
+      filter: blur(2px);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+
+    /* ─── Policy sections ─── */
+    .policy-section {
+      padding: 2rem 2.5rem;
+      background: #fcf2d2;
+      border: 1.5px solid rgba(28,26,20,0.1);
+      border-radius: 14px;
+      margin-bottom: 0.75rem;
+    }
+    .policy-section h2 {
+      font-size: 1.05rem;
+      color: #1A1916;
+      margin: 0 0 0.75rem;
+    }
+    .policy-section p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #5C5850;
+      margin: 0;
+    }
+    .policy-section p + p {
+      margin-top: 0.75rem;
+    }
+
+    /* ─── Footer buttons ─── */
+    .btn-glass-footer {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.25s cubic-bezier(0.34,1.3,0.64,1);
+    }
+    .btn-glass-footer:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.45);
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="navbar" aria-label="Main navigation">
+    <div style="max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:72px;">
+      <a href="/" aria-label="Flooma home" style="display:flex;align-items:center;">
+        <img src="brand_assets/floomaWhitePNG.png" alt="Flooma" style="height:90px;width:auto;object-fit:contain;" />
+      </a>
+      <div class="desktop-nav" style="display:flex;align-items:center;gap:2.5rem;">
+        <a href="/#services" class="nav-link">Services</a>
+        <a href="/pricing" class="nav-link">Pricing</a>
+        <a href="/faq" class="nav-link">FAQ</a>
+        <a href="/contact" class="nav-link">Contact</a>
+      </div>
+      <a href="/contact" class="nav-cta-main desktop-nav">Get in Touch</a>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 bg-transparent border-0 cursor-pointer" aria-label="Open menu" aria-expanded="false">
+        <span class="menu-bar block w-5 h-px bg-white" style="transition:transform 0.3s ease,opacity 0.3s ease;"></span>
+        <span class="menu-bar block w-5 h-px bg-white" style="transition:transform 0.3s ease,opacity 0.3s ease;"></span>
+        <span class="menu-bar block w-5 h-px bg-white" style="transition:transform 0.3s ease,opacity 0.3s ease;"></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" style="display:none;background:rgba(0,0,0,0.97);border-top:1px solid rgba(255,255,255,0.08);">
+      <div class="flex flex-col px-6 py-6 gap-6">
+        <a style="color:rgba(255,255,255,0.7);font-family:'Unispace',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;" href="/#services">Services</a>
+        <a style="color:rgba(255,255,255,0.7);font-family:'Unispace',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;" href="/pricing">Pricing</a>
+        <a style="color:rgba(255,255,255,0.7);font-family:'Unispace',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;" href="/faq">FAQ</a>
+        <a style="color:rgba(255,255,255,0.7);font-family:'Unispace',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;" href="/contact">Contact</a>
+        <a class="nav-cta-main" href="/contact" style="display:inline-block;margin-top:0.5rem;">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section style="padding:9rem 1.5rem 4rem;background:#fff7e0;">
+    <div style="max-width:760px;margin:0 auto;">
+      <p class="reveal" style="font-family:'Unispace',monospace;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8C8880;margin:0 0 1.25rem;">Legal</p>
+      <h1 class="reveal reveal-delay-1" style="font-size:clamp(2.8rem,6vw,5rem);color:#1A1916;margin:0 0 1rem;line-height:1;">Privacy Policy</h1>
+      <p class="reveal reveal-delay-2" style="font-size:0.9rem;color:#8C8880;margin:0;">Last updated: May 2026</p>
+    </div>
+  </section>
+
+  <!-- ═══ POLICY CONTENT ═══ -->
+  <section style="padding:0 1.5rem 6rem;background:#fff7e0;" aria-label="Privacy policy">
+    <div style="max-width:760px;margin:0 auto;">
+
+      <div class="policy-section reveal">
+        <h2>Who we are</h2>
+        <p>Flooma Digital is a web design agency based in Australia. We build and maintain websites for small and local businesses. Our website is floomadigital.com.au.</p>
+      </div>
+
+      <div class="policy-section reveal reveal-delay-1">
+        <h2>What information we collect</h2>
+        <p>We only collect information you give us directly — typically through our contact form or discovery call booking. This includes your name, email address, phone number, and business details.</p>
+        <p>We may also collect basic analytics data through Google Analytics — things like which pages were visited, how long people stayed, and where traffic came from. This data is anonymous and never tied to an individual.</p>
+      </div>
+
+      <div class="policy-section reveal reveal-delay-2">
+        <h2>Why we collect it</h2>
+        <p>We use your information to respond to your enquiry, discuss your project, and if you become a client, to deliver and manage your website. We don't use it for anything else.</p>
+      </div>
+
+      <div class="policy-section reveal">
+        <h2>Who we share it with</h2>
+        <p>Nobody. We don't sell, rent, or share your personal information with third parties. The only exceptions are service providers we use to run our business — like Google Analytics and our hosting provider — and only to the extent necessary to operate our services.</p>
+      </div>
+
+      <div class="policy-section reveal reveal-delay-1">
+        <h2>How we store it</h2>
+        <p>Any information you share with us is stored securely. We don't store payment information — all payments are handled by third party processors like Stripe.</p>
+      </div>
+
+      <div class="policy-section reveal reveal-delay-2">
+        <h2>How long we keep it</h2>
+        <p>We keep your information for as long as we have an active relationship with you, or as long as needed to comply with legal obligations. If you'd like your information deleted, just ask.</p>
+      </div>
+
+      <div class="policy-section reveal">
+        <h2>Cookies</h2>
+        <p>Our website uses basic cookies to understand how visitors use the site. You can disable cookies in your browser settings at any time. We don't use cookies for advertising or tracking across other websites.</p>
+      </div>
+
+      <div class="policy-section reveal reveal-delay-1">
+        <h2>Your rights</h2>
+        <p>Under Australian Privacy Law you have the right to access the personal information we hold about you, request corrections, and ask us to delete it. To do any of these, just get in touch.</p>
+      </div>
+
+      <div class="policy-section reveal reveal-delay-2">
+        <h2>Contact us</h2>
+        <p>If you have any questions about this policy or how we handle your information, reach out at <a href="mailto:support@floomadigital.com" style="color:#1A1916;font-weight:600;text-decoration:underline;text-underline-offset:3px;">support@floomadigital.com</a></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer style="position:relative;background:#0F0E0B;padding:6rem 1.5rem 3rem;overflow:hidden;" aria-label="Footer">
+    <div class="blob" style="width:600px;height:350px;background:rgba(255,255,255,0.03);top:0;left:50%;transform:translateX(-50%);" aria-hidden="true"></div>
+    <div style="max-width:800px;margin:0 auto;position:relative;z-index:1;">
+      <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
+        <a href="/" aria-label="Flooma home" style="display:flex;align-items:center;opacity:0.65;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.65'">
+          <img src="brand_assets/floomaWhitePNG.png" alt="Flooma" style="height:90px;width:auto;object-fit:contain;" />
+        </a>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:1.5rem;font-family:'Unispace',monospace;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;">
+          <a style="color:rgba(255,255,255,0.9);text-decoration:none;" href="/privacy">Privacy Policy</a>
+          <a style="color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s ease;" href="#" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Terms of Service</a>
+          <div style="display:flex;align-items:center;gap:1rem;margin-left:0.25rem;">
+            <a href="https://www.instagram.com/floomadigital/" target="_blank" rel="noopener" aria-label="Instagram" style="color:rgba(255,255,255,0.45);display:flex;align-items:center;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://www.facebook.com/floomadigital/" target="_blank" rel="noopener" aria-label="Facebook" style="color:rgba(255,255,255,0.45);display:flex;align-items:center;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://x.com/floomadigital" target="_blank" rel="noopener" aria-label="Twitter / X" style="color:rgba(255,255,255,0.45);display:flex;align-items:center;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg></a>
+            <a href="https://www.linkedin.com/company/floomadigital" target="_blank" rel="noopener" aria-label="LinkedIn" style="color:rgba(255,255,255,0.45);display:flex;align-items:center;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div style="font-family:'Unispace',monospace;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.28);">© 2025 Flooma Agency. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    function updateNav() { navbar.classList.toggle('scrolled', window.scrollY > 40); }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    const revealObs = new IntersectionObserver(
+      (entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } }); },
+      { threshold: 0.05, rootMargin: '0px 0px 60px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    setTimeout(() => { document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible')); }, 800);
+
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.style.display !== 'none';
+        mobileMenu.style.display = isOpen ? 'none' : 'block';
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    }
+  </script>
+</body>
+</html>
